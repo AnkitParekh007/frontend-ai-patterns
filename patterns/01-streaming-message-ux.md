@@ -2,38 +2,57 @@
 
 ## Problem
 
-Users need progress visibility while model output arrives token by token.
+Model responses can take time and users need progress visibility.
 
 ## Why It Matters
 
-Streaming reduces perceived latency and gives the interface space to show state transitions.
+Streaming makes the interface feel responsive and gives users evidence that the system is working.
 
-## UI Behavior
+## UX Behavior
 
-Render assistant content incrementally with pause, retry, and completed states.
+Render partial assistant content, show a status pill, support retry/cancel, and mark completion explicitly.
 
 ## TypeScript Model
 
 ```ts
-interface StreamChunk { text: string; done: boolean; }
+export interface StreamChunk { text: string; sequence: number; done: boolean; }
 ```
 
 ## Angular Implementation Idea
 
-Use standalone components for rendering and Angular services for state orchestration. Keep provider and tool execution behind backend APIs.
+Use an Angular service that exposes an Observable<StreamChunk> and a standalone message component that appends chunks to a buffer.
+
+## Code Snippet
+
+```ts
+const events$ = service.events$;
+const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
+```
 
 ## Enterprise Concerns
 
-Avoid secrets in the frontend, scope by tenant and role, and log sensitive tool actions.
+- Keep provider secrets on the backend.
+- Scope data by role and tenant.
+- Log sensitive tool actions and approvals.
+- Avoid sending hidden or private UI fields to the model.
 
-## Example Code Snippet
+## Accessibility Considerations
 
-```ts
-const state$ = service.events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- Announce streaming and status changes with polite live regions.
+- Do not rely on color alone for status.
+- Keep approval controls keyboard accessible.
+- Use readable labels for source cards and tool states.
+
+## Testing Notes
+
+- Unit test state transitions.
+- Test empty, loading, failed, retry, and completed states.
+- Verify sensitive actions require approval.
+- Add screenshot tests after UI is stable.
 
 ## Interview Talking Points
 
 - Explain the user risk this pattern reduces.
 - Explain the Angular services/components involved.
-- Explain how the backend boundary keeps the implementation safe.
+- Explain how the backend boundary keeps implementation safe.
+- Explain how the pattern improves trust in AI output.
