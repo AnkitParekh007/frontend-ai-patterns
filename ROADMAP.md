@@ -1,21 +1,37 @@
 # Roadmap
 
-## Near Term
+Watch this repo if you are interested in Angular-first AI copilot and agentic UI patterns.
 
-- Replace screenshot placeholders with real screenshots.
-- Improve responsive layout and accessibility.
-- Add tests for models/services and key UI states.
-- Add clearer demo deployment instructions.
+## v0.1
 
-## Next
+- Initial README and architecture skeleton
+- TypeScript models
+- Mock data
+- Basic demo documentation
 
-- Add more mock data and edge cases.
-- Improve diagrams and architecture docs.
-- Add contributor-friendly issues.
-- Add a live demo URL after deployment.
+## v0.2
 
-## Later
+- Visual demo UI
+- Screenshots
+- Live deployment
+- Responsive layout
 
-- Add deeper examples for enterprise integration.
-- Add backend proxy examples without secrets.
-- Add optional UI library variants where useful.
+## v0.3
+
+- Accessibility improvements
+- Unit tests
+- More mock tool examples
+- Better RAG source UI
+
+## v0.4
+
+- Storybook or component preview
+- Angular Material/PrimeNG variants
+- More enterprise patterns
+
+## v1.0
+
+- Stable demo
+- Docs complete
+- Examples complete
+- Contribution guide complete

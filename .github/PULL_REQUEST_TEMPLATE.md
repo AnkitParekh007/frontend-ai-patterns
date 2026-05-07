@@ -1,6 +1,6 @@
 ## Summary
 
-Describe the change.
+Describe the change and why it helps Angular AI frontend developers.
 
 ## Type
 
@@ -9,10 +9,16 @@ Describe the change.
 - [ ] Accessibility
 - [ ] Test
 - [ ] Mock data/example
+- [ ] Architecture pattern
 
-## Checks
+## Verification
 
-- [ ] No secrets or private data
+- [ ] Ran available checks or documented why not
+- [ ] Reviewed Markdown rendering
+- [ ] Added screenshot/GIF for UI changes
+
+## Safety
+
+- [ ] No secrets, tokens, .env files, or private data
 - [ ] No fake production/user claims
-- [ ] README/docs updated if needed
-- [ ] Screenshot included for UI changes
+- [ ] No fake stars, metrics, or testimonials

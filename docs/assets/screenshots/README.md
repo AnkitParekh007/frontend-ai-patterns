@@ -1,10 +1,13 @@
 # Screenshot Checklist
 
-- main screen
-- architecture view
-- RAG/source view
-- tool execution view
-- approval flow
-- error/recovery state
+Add screenshots or GIFs that show the repo value within 30 seconds.
 
-This is primarily a documentation repo. Screenshots can show the README index, architecture checklist, or rendered docs site after publishing.
+- Main screen
+- Architecture view
+- RAG/source view
+- Tool execution view
+- Approval flow
+- Error/recovery state
+- Mobile/responsive view, if applicable
+
+Recommended dimensions: 1600x900 for desktop, 390x844 for mobile, and short 8-15 second GIFs for flows.
