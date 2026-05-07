@@ -1,17 +1,36 @@
 # What This Proves
 
-## AI Frontend Thought Leadership
+## Technical Proof
 
-The repo translates AI product problems into reusable frontend patterns.
+Pattern cookbook for streaming UX, RAG citations, tool timelines, approvals, state machines, retries, and guardrails.
 
-## Angular / TypeScript Architecture Depth
+## Roles It Supports
 
-Each pattern includes models, Angular implementation ideas, and testing notes.
+AI Frontend Architect / Technical Writer
 
-## Real UX Patterns Beyond Chat
+## Architecture Patterns Demonstrated
 
-The cookbook covers RAG evidence, MCP tools, approval gates, state machines, recovery, and guardrails.
+- Typed Angular models and services.
+- Mock-first AI frontend behavior.
+- User-visible state instead of hidden automation.
+- Documentation that explains intent, tradeoffs, and limitations.
 
-## Enterprise Guardrail Awareness
+## What A Recruiter Should Notice
 
-The patterns assume role scoping, tenant boundaries, backend-only secrets, audit logs, and human approval for risky actions.
+This repo is designed to be understandable within 30 seconds and to show practical AI frontend architecture rather than generic demo code.
+
+## What A Technical Interviewer Can Ask
+
+Which AI frontend pattern most reduces enterprise user risk and why?
+
+## What Is Mocked Vs Real
+
+- Mocked: AI/model responses, RAG retrieval, tool execution, approvals, and workflow data.
+- Real: Angular project structure, TypeScript models, UI architecture, documentation, and buildable repo scaffold where applicable.
+
+## What Is Not Claimed
+
+- No production users are claimed.
+- No merged upstream PRs are claimed.
+- No private company code or customer data is included.
+- No API keys or provider credentials are required.
