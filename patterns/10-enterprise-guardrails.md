@@ -2,57 +2,69 @@
 
 ## Problem
 
-AI UI must respect roles, tenants, policies, and audit requirements.
+Enterprise AI interfaces must respect permissions, tenant boundaries, approvals, audit needs, and policy constraints even when users want a fast answer.
 
 ## Why It Matters
 
-Guardrails make AI experiences viable for enterprise products.
+Guardrails are what make an AI interface viable in real organizations. If the frontend hides policy outcomes or blurs allowed versus blocked actions, users will either overtrust the system or avoid it entirely.
 
-## UX Behavior
+## When To Use
 
-Show permission limits, approval gates, audit trails, tenant context, and dangerous-action warnings.
+- internal enterprise copilots
+- admin and operator tooling
+- multi-tenant applications
+- any feature touching sensitive records, policy-bound actions, or external tools
+
+## UX Anatomy
+
+- allowed and blocked actions are visibly differentiated
+- tenant or role context is available when it matters
+- risky actions route through approvals or refusals
+- audit-relevant events appear in the timeline or session history
 
 ## TypeScript Model
 
 ```ts
-export interface Guardrail { policy: string; enforced: boolean; reason?: string; }
+export interface Guardrail {
+  policy: string;
+  enforced: boolean;
+  reason?: string;
+  severity?: "info" | "warning" | "block";
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Fetch guardrail decisions from the backend and render clear blocked/allowed states in Angular.
+- Treat backend policy decisions as authoritative, but make the outcome visible in the UI.
+- Do not hide blocked actions entirely if explanation matters; sometimes disabled with reason is better.
+- Reuse guardrail presentation across approvals, tools, and context-sensitive surfaces.
+- Make tenant and role assumptions obvious in development and operator views.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- a blocked action looks like a broken feature instead of a policy decision
+- frontend permissions drift from backend truth
+- tenant context is invisible during cross-account work
+- audit-relevant actions disappear from the session record
+- policy messaging is too vague to act on
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Pair disabled or blocked states with readable text explanations.
+- Ensure warning banners and policy notices are announced appropriately.
+- Avoid color-only severity indicators.
+- Keep policy messaging concise and actionable.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- blocked-state rendering tests
+- policy reason formatting tests
+- approval escalation tests
+- tenant-context visibility tests
+- permission drift regression tests
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Demonstrates enterprise awareness beyond consumer chat UI patterns.
+- Shows that safe AI UX depends on visible policy handling.
+- Strong signal for Angular roles involving internal tools, copilots, or admin systems.

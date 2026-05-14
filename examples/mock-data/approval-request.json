@@ -1,0 +1,7 @@
+{
+  "id": "approval-1",
+  "title": "Restart worker service",
+  "riskLevel": "high",
+  "reason": "This action affects live production job processing.",
+  "actionSummary": "Restart the queue worker for the eu-central region after confirming backlog state."
+}

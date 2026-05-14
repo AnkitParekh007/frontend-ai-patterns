@@ -2,57 +2,93 @@
 
 ## Problem
 
-Tool execution is risky when users cannot see what happened.
+When an agent uses tools invisibly, users cannot tell what happened, what is pending, or what failed.
 
 ## Why It Matters
 
-A timeline makes planning, execution, failure, and recovery reviewable.
+Tool transparency reduces confusion and creates an audit-friendly interaction model. It is especially important in enterprise settings where tool actions may affect real systems or records.
 
-## UX Behavior
+## When To Use
 
-Show queued, running, awaiting approval, succeeded, failed, skipped, and retried states.
+- agents that search, mutate, or trigger backend workflows
+- MCP-style tool integrations
+- product surfaces where plan and execution should be reviewable
+- debugging and operator-facing copilots
+
+## UX Anatomy
+
+- each tool call becomes a visible timeline item
+- items expose status, summary, timestamps, and approval requirements
+- users can distinguish queued, running, approved, failed, retried, and skipped steps
+- follow-up actions such as retry or inspect details live at the timeline level
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI
+    participant Agent
+    participant Tool
+    User->>UI: Submit request
+    UI->>Agent: Start session
+    Agent->>UI: Queue tool event
+    Agent->>Tool: Invoke tool
+    Tool-->>Agent: Result or error
+    Agent-->>UI: Running, success, or failure event
+    UI-->>User: Update timeline item
+```
 
 ## TypeScript Model
 
 ```ts
-export type ToolStatus = "queued" | "running" | "awaiting_approval" | "succeeded" | "failed";
+export interface ToolTimelineItem {
+  id: string;
+  toolName: string;
+  status:
+    | "queued"
+    | "running"
+    | "awaiting_approval"
+    | "succeeded"
+    | "failed"
+    | "skipped"
+    | "retried";
+  summary: string;
+  startedAt?: string;
+  finishedAt?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Represent tool calls as immutable events and render them through a timeline component.
+- Model timeline items as immutable event snapshots, not mutable DOM state.
+- Use a dedicated component so tool logic does not leak into the message thread template.
+- Group low-value internal steps if the raw tool event stream is too noisy.
+- Keep detailed payload inspection behind a disclosure to preserve readability.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- duplicate tool events produce duplicate rows
+- a running state never transitions to completion
+- approval-gated tools appear as if they already executed
+- raw payloads expose internal details that users should not see
+- long tool chains overwhelm narrow viewports
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Use list semantics or timeline semantics consistently.
+- Provide text labels for all statuses.
+- Ensure expanded details can be opened without a pointer device.
+- Preserve readable order on mobile layouts.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- test timeline ordering
+- test status transitions
+- test approval-gated tool rendering
+- test hidden-details disclosure state
+- test compact mobile summary rendering
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Demonstrates how agent tooling becomes understandable in the UI layer.
+- Shows awareness of auditability and operator workflows.
+- Moves beyond chat UX into orchestration transparency.

@@ -1,0 +1,7 @@
+{
+  "id": "recovery-1",
+  "cause": "The tool execution timed out while waiting for a dependent service.",
+  "retryable": true,
+  "nextStep": "Retry the action once after reloading the service status.",
+  "fallbackLabel": "Open manual runbook"
+}

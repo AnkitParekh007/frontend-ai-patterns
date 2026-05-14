@@ -2,35 +2,37 @@
 
 ## Technical Proof
 
-Pattern cookbook for streaming UX, RAG citations, tool timelines, approvals, state machines, retries, and guardrails.
+This repo shows that the author can break AI frontend systems into reusable interaction patterns instead of stopping at a generic chat demo. It covers streaming state, citations, tool transparency, approvals, agent state, context contracts, recovery flows, and enterprise policy visibility.
 
-## Roles It Supports
+## Developer Value
 
-AI Frontend Architect / Technical Writer
+- Angular developers get implementation notes they can apply to real applications.
+- TypeScript developers get reusable model contracts and mock fixtures.
+- Product teams get UX checklists for trust, accessibility, and failure handling.
 
-## Architecture Patterns Demonstrated
+## Recruiter Value
 
-- Typed Angular models and services.
-- Mock-first AI frontend behavior.
-- User-visible state instead of hidden automation.
-- Documentation that explains intent, tradeoffs, and limitations.
+- public evidence of AI frontend architecture depth
+- practical documentation, not just screenshots
+- enterprise-aware thinking without fake backend or adoption claims
 
-## What A Recruiter Should Notice
+## Interview Value
 
-This repo is designed to be understandable within 30 seconds and to show practical AI frontend architecture rather than generic demo code.
+Strong follow-up questions include:
 
-## What A Technical Interviewer Can Ask
-
-Which AI frontend pattern most reduces enterprise user risk and why?
+- How should streaming UI recover if a response stalls mid-sentence?
+- Which actions need approval versus passive audit logging?
+- What frontend context is safe to serialize for orchestration?
+- How do you expose tool execution without overwhelming users?
 
 ## What Is Mocked Vs Real
 
-- Mocked: AI/model responses, RAG retrieval, tool execution, approvals, and workflow data.
-- Real: Angular project structure, TypeScript models, UI architecture, documentation, and buildable repo scaffold where applicable.
+- Mocked: LLM output, retrieval payloads, tool execution events, approvals, and workflow fixtures.
+- Real: typed models, Angular implementation notes, UI architecture decisions, diagrams, failure analysis, accessibility guidance, and testing guidance.
 
 ## What Is Not Claimed
 
-- No production users are claimed.
-- No merged upstream PRs are claimed.
-- No private company code or customer data is included.
-- No API keys or provider credentials are required.
+- no live customer usage
+- no production deployment
+- no ATS or hiring outcome promises
+- no backend framework implementation

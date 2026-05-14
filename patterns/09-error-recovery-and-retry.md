@@ -2,57 +2,81 @@
 
 ## Problem
 
-Agent flows fail due to providers, tools, validation, or network issues.
+AI workflows fail in many ways: provider timeouts, bad tool inputs, policy blocks, retrieval misses, and user context issues.
 
 ## Why It Matters
 
-Recovery UX helps users keep trust and continue safely.
+A good recovery experience protects trust. Users do not need perfect systems; they need clear explanations, sensible retry options, and safe fallback paths.
 
-## UX Behavior
+## When To Use
 
-Show failure cause, retry option, fallback plan, and recovered state.
+- any production-facing AI workflow
+- multi-step agent flows with external dependencies
+- operator tools where diagnosis matters
+- user-facing copilots where failure must be understandable
+
+## UX Anatomy
+
+- failure is named, not hidden behind a generic toast
+- retryability is explicit
+- fallback or next-best action is offered
+- recovered flows return to a truthful state instead of silently restarting
+
+```mermaid
+flowchart TD
+    Failure["Failure detected"] --> Explain["Explain cause to user"]
+    Explain --> Decide{"Retryable?"}
+    Decide -->|Yes| Retry["Retry with context preserved"]
+    Decide -->|No| Fallback["Offer fallback or manual path"]
+    Retry --> Success["Recovered session"]
+    Retry --> Failure
+    Fallback --> End["User continues safely"]
+```
 
 ## TypeScript Model
 
 ```ts
-export interface RecoveryPlan { cause: string; retryable: boolean; nextStep: string; }
+export interface RecoveryPlan {
+  id: string;
+  cause: string;
+  retryable: boolean;
+  nextStep: string;
+  fallbackLabel?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Use typed error events and show a RecoveryPanelComponent when state moves to failed or recovering.
+- Model recovery as a first-class panel or state, not an afterthought.
+- Preserve enough session context so retry can be meaningful without replay bugs.
+- Keep user-facing cause summaries separate from raw backend error payloads.
+- Consider whether retry should repeat the same step or branch to a safer alternative.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- retry button loops forever with no changed context
+- raw internal errors leak into the UI
+- fallback path is missing for non-retryable failures
+- state resets too aggressively and loses user trust
+- timeline or citations remain stale after recovery
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Explain failures in plain language.
+- Make retry and fallback controls obvious and keyboard accessible.
+- Avoid overwhelming screen reader users with repeated live-region alerts.
+- Ensure resolved failures no longer dominate the reading order.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- retryable versus non-retryable rendering tests
+- preserved-context retry tests
+- stale-state cleanup tests
+- fallback button visibility tests
+- user-facing error summary formatting tests
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Shows realistic thinking about operational failure, not only happy-path demo UX.
+- Connects trust directly to recovery design.
+- Useful proof for production-minded frontend roles.

@@ -1,37 +1,32 @@
 # Roadmap
 
-Watch this repo if you are interested in Angular-first AI copilot and agentic UI patterns.
-
-## v0.1
-
-- Initial README and architecture skeleton
-- TypeScript models
-- Mock data
-- Basic demo documentation
-
 ## v0.2
 
-- Visual demo UI
-- Screenshots
-- Live deployment
-- Responsive layout
+- complete structured pattern pages for all core topics
+- add shared TypeScript models and mock data fixtures
+- replace placeholder doc links with a concrete Pages target and rollout plan
 
 ## v0.3
 
-- Accessibility improvements
-- Unit tests
-- More mock tool examples
-- Better RAG source UI
+- add Angular signal-based examples for two end-to-end patterns
+- add screenshot set for streaming, citations, approval, and timeline UI
+- add link validation or markdown lint workflow
 
 ## v0.4
 
-- Storybook or component preview
-- Angular Material/PrimeNG variants
-- More enterprise patterns
+- publish GitHub Pages docs
+- add framework comparison notes for Angular versus React-first AI UI ecosystems
+- expand testing examples with reducer and component contract coverage
+
+## v0.5
+
+- add enterprise playbooks for policy visibility, audit trails, and operator workflows
+- add downloadable diagram assets
+- add contributor-authored pattern variations
 
 ## v1.0
 
-- Stable demo
-- Docs complete
-- Examples complete
-- Contribution guide complete
+- stable docs site
+- complete example pack
+- stronger contribution flow
+- maintained issue backlog with labeled starter tasks

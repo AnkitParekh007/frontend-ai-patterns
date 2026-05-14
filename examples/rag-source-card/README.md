@@ -1,3 +1,3 @@
-# rag-source-card
+# RAG Source Card Example
 
-Example placeholder for the rag-source-card pattern.
+Use [../mock-data/rag-citations.json](../mock-data/rag-citations.json) as a fixture for citation cards that display title, snippet, confidence, and provenance.

@@ -1,3 +1,9 @@
 # Architecture Principles
 
-AI frontend systems should make context, model output, tool execution, and human approval visible. The UI should distinguish asking, planning, executing, debugging, recovering, and completing.
+- Make user-visible state explicit.
+- Treat tool execution as a reviewable workflow, not hidden magic.
+- Show evidence near generated claims.
+- Serialize only safe, deliberate context.
+- Use approvals and guardrails for risky mutations.
+- Design recovery states before happy-path polish.
+- Keep provider access and secrets on the backend.

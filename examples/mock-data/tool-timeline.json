@@ -1,0 +1,16 @@
+[
+  {
+    "id": "tool-1",
+    "toolName": "searchKnowledgeBase",
+    "status": "succeeded",
+    "summary": "Queried runbook content for queue recovery steps",
+    "startedAt": "2026-05-14T09:00:00Z",
+    "finishedAt": "2026-05-14T09:00:01Z"
+  },
+  {
+    "id": "tool-2",
+    "toolName": "restartWorkerService",
+    "status": "awaiting_approval",
+    "summary": "Prepared worker restart action for production queue consumer"
+  }
+]

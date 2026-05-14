@@ -2,57 +2,79 @@
 
 ## Problem
 
-AI features need page context without leaking sensitive data.
+AI features need application context, but naïvely serializing the entire page leaks sensitive, irrelevant, or unstable UI data.
 
 ## Why It Matters
 
-A serializer creates a deliberate contract between Angular UI and backend orchestration.
+Context serialization is the contract between frontend state and backend orchestration. A good serializer improves relevance while protecting privacy and reducing prompt noise.
 
-## UX Behavior
+## When To Use
 
-Send route, selected record id, role, visible fields, and safe metadata only.
+- copilots embedded inside complex enterprise pages
+- assistants that need route, selection, and visible field context
+- any app where UI state should influence orchestration decisions
+- systems with role or tenant-specific behavior
+
+## UX Anatomy
+
+- user asks a question from a specific page
+- frontend snapshots safe context
+- snapshot is sent with the request
+- backend uses only the allowed fields
+- the UI can explain what context shaped the answer if needed
+
+```mermaid
+flowchart LR
+    Page["Active route and selection"] --> Filter["Whitelist serializer"]
+    Filter --> Snapshot["Safe context snapshot"]
+    Snapshot --> Backend["Backend orchestration request"]
+    Backend --> UI["Context-aware response"]
+```
 
 ## TypeScript Model
 
 ```ts
-export interface UiContext { route: string; selectedRecordId?: string; role?: string; visibleFields: string[]; }
+export interface UiContextSnapshot {
+  route: string;
+  selectedRecordId?: string;
+  actorRole?: string;
+  visibleFields: string[];
+  tenantId?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Build a ContextSerializerService that whitelists fields and strips secrets before requests.
+- Build the serializer as a dedicated service with an explicit whitelist.
+- Pull from router state, selected entities, and visible-field metadata instead of arbitrary component internals.
+- Keep serialization synchronous and predictable so requests are debuggable.
+- Log or surface the snapshot in development builds to catch accidental leakage.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- sensitive hidden fields leak into the prompt context
+- snapshots differ between identical screens due to unstable ordering
+- route changes race with request creation
+- context is too thin and makes answers irrelevant
+- context is too large and hurts model quality
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- If user-visible context chips are shown, ensure labels are readable and keyboard focusable.
+- Avoid overwhelming users with raw JSON dumps in the main workflow.
+- Keep context disclosures optional but discoverable.
+- Use plain language if you expose “what the assistant used” to users.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- whitelist serializer tests
+- hidden-field exclusion tests
+- route snapshot tests
+- stable ordering tests
+- tenant and role inclusion tests
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Demonstrates understanding of safe frontend-to-backend contracts.
+- Shows that prompt quality depends on UI architecture, not only model choice.
+- Useful for enterprise and privacy-sensitive product discussions.

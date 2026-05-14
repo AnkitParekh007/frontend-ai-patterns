@@ -1,3 +1,3 @@
-# tool-timeline
+# Tool Timeline Example
 
-Example placeholder for the tool-timeline pattern.
+Use [../mock-data/tool-timeline.json](../mock-data/tool-timeline.json) to render queued, completed, and awaiting-approval tool states in a reviewable timeline.

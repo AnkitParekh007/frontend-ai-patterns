@@ -2,57 +2,79 @@
 
 ## Problem
 
-Answers can look unsupported when retrieved context is hidden.
+RAG answers lose credibility when supporting evidence is hidden or difficult to inspect.
 
 ## Why It Matters
 
-RAG UI should let users inspect the evidence behind an answer.
+Citation UI turns retrieval from a backend detail into a user trust feature. It helps users verify claims, understand provenance, and decide whether the answer is strong enough to act on.
 
-## UX Behavior
+## When To Use
 
-Show source title, type, snippet, confidence, and link near the answer.
+- support copilots with policy or knowledge-base grounding
+- enterprise search experiences
+- regulated workflows where evidence matters more than fluency
+- any feature that presents retrieved facts as if they are authoritative
+
+## UX Anatomy
+
+- source cards appear adjacent to the answer, not buried in a separate page
+- each card shows title, snippet, source type, and confidence indicator
+- users can inspect evidence without losing conversational context
+- weak or missing citations are visible, not hidden
+
+```mermaid
+flowchart LR
+    Retrieval["Retrieved documents"] --> Normalized["Normalized citation model"]
+    Normalized --> Ranked["Ranked and filtered citations"]
+    Ranked --> Cards["Rendered source cards"]
+    Cards --> User["User inspects provenance before acting"]
+```
 
 ## TypeScript Model
 
 ```ts
-export interface RagSource { title: string; snippet: string; confidence: number; sourceType: string; url?: string; }
+export interface RagCitation {
+  id: string;
+  title: string;
+  sourceType: "policy" | "knowledge_base" | "document" | "ticket";
+  snippet: string;
+  confidence: number;
+  url?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Create a RagSourceCardComponent and render cards beside or below the assistant response.
+- Keep citation models separate from raw message models so cards can be reused outside chat.
+- Normalize backend citation payloads before binding them in templates.
+- Use compact card layouts on mobile and expandable snippets on desktop.
+- If confidence is shown, pair the number with a textual label such as `high relevance`.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- answer renders but citations never arrive
+- citation order changes between retries and confuses users
+- snippets are too long and drown out the answer
+- low-confidence cards are presented without caution
+- broken source URLs create dead-end review flows
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Expose source cards as a labeled list.
+- Make each title or document action focusable and descriptive.
+- Avoid color-only confidence indicators.
+- Truncate long snippets carefully and provide an expand affordance.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- test citation normalization from backend payloads
+- test confidence label formatting
+- test missing URL behavior
+- test layout with zero, one, and many sources
+- test keyboard navigation across citations
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Shows understanding that RAG UX is an evidence experience, not just a retrieval system.
+- Demonstrates how frontend design affects trust in model-generated answers.
+- Highlights practical Angular concerns like normalization, layout density, and mobile behavior.

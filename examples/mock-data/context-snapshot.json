@@ -1,0 +1,7 @@
+{
+  "route": "/accounts/enterprise/incident/42",
+  "selectedRecordId": "incident-42",
+  "actorRole": "support_manager",
+  "visibleFields": ["title", "severity", "region", "status"],
+  "tenantId": "enterprise-eu"
+}

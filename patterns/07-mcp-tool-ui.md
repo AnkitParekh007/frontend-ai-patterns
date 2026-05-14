@@ -2,57 +2,71 @@
 
 ## Problem
 
-MCP-style tools need frontend affordances for intent and result.
+MCP-style tool ecosystems are powerful, but the frontend can become opaque if users only see final answers and never the tool capabilities or constraints behind them.
 
 ## Why It Matters
 
-Users need to know which tools exist, what they do, and whether approval is required.
+Tool UI shapes trust. Users need to understand what kinds of tools exist, what each one can do, and when approval or policy constraints apply.
 
-## UX Behavior
+## When To Use
 
-Render tool name, purpose, input summary, permission need, status, and result.
+- products consuming MCP-like tool metadata
+- AI workbenches that expose tool catalogs
+- debugging interfaces for agent operators
+- environments where tool permissions vary by role
+
+## UX Anatomy
+
+- a visible tool catalog or tool timeline
+- concise tool description and capability summary
+- approval or permission requirement indicator
+- result or refusal summary after execution
+- optional drill-down for input and output details
 
 ## TypeScript Model
 
 ```ts
-export interface McpToolView { name: string; description: string; requiresApproval: boolean; status: string; }
+export interface McpToolView {
+  name: string;
+  description: string;
+  requiresApproval: boolean;
+  status: "available" | "running" | "blocked" | "succeeded" | "failed";
+  permissionScope?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Create a ToolCallTimelineComponent backed by backend tool event messages.
+- Normalize raw tool metadata before display; MCP payloads are not a UI model by themselves.
+- Keep catalog views and execution timeline views separate even if they share underlying data.
+- Use badges for approval and permission scopes, but pair them with text.
+- Decide early whether tools are user-invokable, agent-invokable, or both.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- a tool looks available but policy blocks it at execution time
+- tool descriptions are too technical for end users
+- result views expose internal payloads without summarization
+- permission scope is hidden until after failure
+- UI treats all tools as equivalent despite different risk levels
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Use descriptive names and summaries for tool entries.
+- Ensure badges have accessible text alternatives.
+- Keep expanded details readable and collapsible from the keyboard.
+- Avoid dense tables when a list or cards read better on mobile.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- metadata normalization tests
+- permission badge rendering tests
+- blocked-state tests
+- catalog versus timeline rendering tests
+- keyboard disclosure tests
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Shows practical thinking about tool ecosystems instead of generic “agent can use tools” claims.
+- Demonstrates how protocol-level capabilities must be translated into usable UI.
+- Relevant for MCP adoption and agent workbench design.

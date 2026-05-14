@@ -2,57 +2,70 @@
 
 ## Problem
 
-Enterprise workflows often require judgment before action.
+Some workflows require human judgment even when the agent is technically capable of continuing automatically.
 
 ## Why It Matters
 
-Human checkpoints reduce risk and create accountability.
+Human-in-the-loop design keeps accountability where it belongs. It turns AI from an opaque automation engine into a collaborator that pauses when risk, ambiguity, or policy requires review.
 
-## UX Behavior
+## When To Use
 
-Pause at checkpoints, show why approval is needed, and capture decision metadata.
+- customer-facing or financial workflows
+- approvals that need business judgment, not just permission
+- ambiguous recommendations with multiple valid actions
+- operational flows where a human must confirm context before execution
+
+## UX Anatomy
+
+- workflow reaches a checkpoint
+- agent explains why it is waiting
+- user gets enough context to decide
+- the system captures who decided and what happened next
 
 ## TypeScript Model
 
 ```ts
-export interface HumanCheckpoint { id: string; reason: string; decidedBy?: string; decision?: "approved" | "rejected"; }
+export interface HumanCheckpoint {
+  id: string;
+  reason: string;
+  decidedBy?: string;
+  decision?: "approved" | "rejected";
+  notes?: string;
+}
 ```
 
-## Angular Implementation Idea
+## Angular Implementation Notes
 
-Use route-level or modal approval components that block execution until a decision exists.
+- Distinguish between hard approval gates and soft review checkpoints.
+- Capture decision metadata in the same state graph as the rest of the workflow.
+- Prefer inline explanation plus action controls over unexplained modal interruptions.
+- Let parent workflow state decide whether execution can continue.
 
-## Code Snippet
+## Failure States
 
-```ts
-const events$ = service.events$;
-const state$ = events$.pipe(scan((state, event) => reduceAgentState(state, event), initialState));
-```
+- the checkpoint explains too little for a real decision
+- users cannot tell whether the workflow is paused or broken
+- decision metadata is lost after refresh
+- a rejected step still appears as completed in the timeline
+- checkpoints appear too often and train users to click through
 
-## Enterprise Concerns
+## Accessibility Checklist
 
-- Keep provider secrets on the backend.
-- Scope data by role and tenant.
-- Log sensitive tool actions and approvals.
-- Avoid sending hidden or private UI fields to the model.
+- Make the checkpoint reason explicit and concise.
+- Ensure decision controls and optional notes are keyboard accessible.
+- Use headings and grouping so review context is easy to scan.
+- Keep pause states visible to screen readers and sighted users alike.
 
-## Accessibility Considerations
+## Testing Checklist
 
-- Announce streaming and status changes with polite live regions.
-- Do not rely on color alone for status.
-- Keep approval controls keyboard accessible.
-- Use readable labels for source cards and tool states.
+- checkpoint pause-state tests
+- approval versus review-path tests
+- decision metadata persistence tests
+- rejected-path rendering tests
+- keyboard and focus flow tests
 
-## Testing Notes
+## Recruiter Talking Points
 
-- Unit test state transitions.
-- Test empty, loading, failed, retry, and completed states.
-- Verify sensitive actions require approval.
-- Add screenshot tests after UI is stable.
-
-## Interview Talking Points
-
-- Explain the user risk this pattern reduces.
-- Explain the Angular services/components involved.
-- Explain how the backend boundary keeps implementation safe.
-- Explain how the pattern improves trust in AI output.
+- Shows that the repo addresses governance and user judgment, not only automation.
+- Useful for enterprise and regulated product conversations.
+- Demonstrates understanding of the difference between approval UX and broader review workflows.

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "src-1",
+    "title": "Incident Response Policy",
+    "sourceType": "policy",
+    "snippet": "High-risk production changes require a named approver and a rollback plan.",
+    "confidence": 0.93,
+    "url": "https://example.invalid/policies/incident-response"
+  },
+  {
+    "id": "src-2",
+    "title": "Knowledge Base: Deployment Recovery",
+    "sourceType": "knowledge_base",
+    "snippet": "Restarting the worker service usually restores queue consumption within two minutes.",
+    "confidence": 0.81
+  }
+]

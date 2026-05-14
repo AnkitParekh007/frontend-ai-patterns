@@ -1,0 +1,5 @@
+[
+  { "messageId": "msg-1", "sequence": 1, "text": "I found three", "done": false },
+  { "messageId": "msg-1", "sequence": 2, "text": " likely causes for the outage.", "done": false },
+  { "messageId": "msg-1", "sequence": 3, "text": " Here is the recommended next step.", "done": true }
+]
