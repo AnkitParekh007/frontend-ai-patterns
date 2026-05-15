@@ -36,6 +36,33 @@ stateDiagram-v2
     retrying --> streaming
 ```
 
+## Streaming Lifecycle Diagram
+
+```mermaid
+flowchart TD
+    Submit["User submits prompt"] --> Draft["Append user message immediately"]
+    Draft --> Pending["Create assistant message with thinking status"]
+    Pending --> Connect["Open stream request"]
+    Connect --> FirstToken{"First token received?"}
+    FirstToken -- yes --> Streaming["Set status: streaming"]
+    FirstToken -- timeout / error --> Failed["Set status: failed"]
+    Streaming --> Chunk["Receive token chunk"]
+    Chunk --> Reduce["Append chunk by messageId and sequence"]
+    Reduce --> Render["Render updated assistant content"]
+    Render --> Done{"done = true?"}
+    Done -- no --> Chunk
+    Done -- yes --> Complete["Set status: complete"]
+    Failed --> Retry["Retry creates a new stream session"]
+    Retry --> Pending
+```
+
+Implementation notes for this lifecycle:
+
+- Keep `messageId` stable across chunks so rendering updates one assistant row.
+- Track chunk `sequence` numbers before appending text to avoid out-of-order output.
+- Treat `done: true` as the completion transition, not just a closed network connection.
+- Retry should create a fresh stream session instead of appending to a failed one.
+
 ## TypeScript Model
 
 ```ts
