@@ -6,7 +6,7 @@ This repo is for developers building trustworthy AI frontends, not generic chat 
 
 ## Docs
 
-Planned GitHub Pages URL:
+Live GitHub Pages URL:
 [https://ankitparekh007.github.io/frontend-ai-patterns/](https://ankitparekh007.github.io/frontend-ai-patterns/)
 
 Current doc entry points:
