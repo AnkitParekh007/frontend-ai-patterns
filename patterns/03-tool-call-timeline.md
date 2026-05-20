@@ -92,3 +92,11 @@ export interface ToolTimelineItem {
 - Demonstrates how agent tooling becomes understandable in the UI layer.
 - Shows awareness of auditability and operator workflows.
 - Moves beyond chat UX into orchestration transparency.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/03-tool-call-timeline/contract.ts)
+- [fixture.json](../starter-packs/03-tool-call-timeline/fixture.json)
+- [diagram.mmd](../starter-packs/03-tool-call-timeline/diagram.mmd)
+- [implementation checklist](../starter-packs/03-tool-call-timeline/implementation-checklist.md)
+- [testing checklist](../starter-packs/03-tool-call-timeline/testing-checklist.md)

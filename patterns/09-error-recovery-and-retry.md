@@ -80,3 +80,11 @@ export interface RecoveryPlan {
 - Shows realistic thinking about operational failure, not only happy-path demo UX.
 - Connects trust directly to recovery design.
 - Useful proof for production-minded frontend roles.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/09-error-recovery-and-retry/contract.ts)
+- [fixture.json](../starter-packs/09-error-recovery-and-retry/fixture.json)
+- [diagram.mmd](../starter-packs/09-error-recovery-and-retry/diagram.mmd)
+- [implementation checklist](../starter-packs/09-error-recovery-and-retry/implementation-checklist.md)
+- [testing checklist](../starter-packs/09-error-recovery-and-retry/testing-checklist.md)

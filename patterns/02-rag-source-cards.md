@@ -78,3 +78,11 @@ export interface RagCitation {
 - Shows understanding that RAG UX is an evidence experience, not just a retrieval system.
 - Demonstrates how frontend design affects trust in model-generated answers.
 - Highlights practical Angular concerns like normalization, layout density, and mobile behavior.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/02-rag-source-cards/contract.ts)
+- [fixture.json](../starter-packs/02-rag-source-cards/fixture.json)
+- [diagram.mmd](../starter-packs/02-rag-source-cards/diagram.mmd)
+- [implementation checklist](../starter-packs/02-rag-source-cards/implementation-checklist.md)
+- [testing checklist](../starter-packs/02-rag-source-cards/testing-checklist.md)

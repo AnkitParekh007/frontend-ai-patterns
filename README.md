@@ -1,108 +1,135 @@
 # Frontend AI Patterns
 
-An Angular and TypeScript architecture cookbook for AI product UIs: streaming chat, RAG citations, MCP and tool timelines, approvals, state machines, context serialization, human-in-the-loop flows, retries, and enterprise guardrails.
+Angular and TypeScript patterns for trustworthy AI frontends. This repo is a reusable reference library for streaming chat, RAG evidence, tool execution UX, approvals, state recovery, and enterprise guardrails.
 
-This repo is for developers building trustworthy AI frontends, not generic chat demos. It focuses on UI contracts, typed models, failure handling, accessibility, and the boundary between frontend behavior and backend orchestration.
+[Open the live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Quickstart](docs/quickstart.md) | [Pattern Library](docs/pattern-library.md) | [Examples](docs/examples.md) | [Enterprise Readiness](docs/enterprise-readiness.md)
 
-## Docs
+![Architecture overview](docs/assets/architecture-overview.svg)
 
-Live GitHub Pages URL:
-[https://ankitparekh007.github.io/frontend-ai-patterns/](https://ankitparekh007.github.io/frontend-ai-patterns/)
+## Why This Repo Is Worth Forking
 
-Current doc entry points:
-- [Architecture Overview](docs/architecture.md)
-- [GitHub Pages Plan](docs/github-pages-plan.md)
-- [Angular AI Frontend Checklist](docs/angular-ai-frontend-checklist.md)
-- [Recruiter Review Guide](RECRUITER_REVIEW_GUIDE.md)
-- [What This Proves](WHAT_THIS_PROVES.md)
+- Copy typed contracts for streaming, citations, approvals, recovery, and context state.
+- Reuse JSON fixtures for demos, tests, Storybook states, and onboarding.
+- Start from Angular composition examples without adopting a full framework.
+- Use the starter packs to lift one pattern into your app in under an hour.
+- Keep enterprise concerns visible: auditability, approvals, guardrails, accessibility, and failure states.
 
-## Why This Repo Exists
+## What You Can Reuse In Five Minutes
 
-Most AI frontend examples stop at “chat input plus model output.” Real product teams need more:
+- [Canonical TypeScript contracts](examples/typescript-models/pattern-models.ts)
+- [Angular shell composition examples](examples/angular/README.md)
+- [Mock fixtures for realistic UI states](examples/mock-data/README.md)
+- [Starter packs with contract, fixture, diagram, and checklists](starter-packs/README.md)
+- [Decision guides for approvals, tool visibility, citations, and persistence](docs/decision-guides.md)
 
-- streaming states that feel responsive without hiding failure
-- citations that make retrieved evidence inspectable
-- tool-call UI that exposes intent, status, and results
-- approvals for risky actions
-- state models that keep agent behavior understandable
-- context serialization that avoids leaking sensitive UI data
-- enterprise guardrails that align product UX with policy
+## Visual Preview
 
-## Pattern Index
+![Pattern preview grid](docs/assets/pattern-preview-grid.svg)
 
-1. [Streaming Message UX](patterns/01-streaming-message-ux.md)
-2. [RAG Source Cards](patterns/02-rag-source-cards.md)
-3. [Tool-Call Timeline](patterns/03-tool-call-timeline.md)
-4. [Action Approval Flow](patterns/04-action-approval-flow.md)
-5. [Agent State Machine](patterns/05-agent-state-machine.md)
-6. [Context Serializer](patterns/06-context-serializer.md)
-7. [MCP Tool UI](patterns/07-mcp-tool-ui.md)
-8. [Human In The Loop](patterns/08-human-in-the-loop.md)
-9. [Error Recovery And Retry](patterns/09-error-recovery-and-retry.md)
-10. [Enterprise Guardrails](patterns/10-enterprise-guardrails.md)
+The docs site is organized like a product, not a README mirror:
 
-## What You Can Reuse
-
-- typed TypeScript models in [examples/typescript-models/pattern-models.ts](examples/typescript-models/pattern-models.ts)
-- Angular-oriented composition notes in [examples/angular/README.md](examples/angular/README.md)
-- mock workflow data in [examples/mock-data/README.md](examples/mock-data/README.md)
-- pattern-by-pattern implementation checklists under [`patterns/`](patterns)
+- `Home`: value proposition, architecture, proof pillars, reuse paths
+- `Quickstart`: what to copy, where to start, minimal and production-shaped paths
+- `Pattern Library`: grouped patterns with repeatable templates and linked packs
+- `Examples`: Angular examples, TypeScript models, mock fixtures, starter packs
+- `Enterprise Readiness`: frontend boundaries, approvals, observability, rollout checks
+- `Contributing`: contribution standards for high-trust public artifacts
 
 ## Architecture Map
 
 ```mermaid
 flowchart LR
     User["User"] --> Shell["Angular shell"]
-    Shell --> State["Agent state store"]
-    Shell --> Stream["Streaming message renderer"]
-    Shell --> Sources["RAG citation cards"]
-    Shell --> Timeline["Tool-call timeline"]
-    Shell --> Approval["Approval and checkpoint UI"]
-    State --> Context["Context serializer"]
+    Shell --> Thread["Conversation renderer"]
+    Shell --> Retrieval["RAG citation cards"]
+    Shell --> Timeline["Tool timeline"]
+    Shell --> Approval["Approval and review surfaces"]
+    Shell --> Store["Session state store"]
+    Store --> Context["Context serializer"]
+    Store --> Recovery["Retry and recovery policies"]
     Context --> Api["Backend orchestration API"]
-    Api --> Retrieval["Retrieval and policies"]
     Api --> Tools["Tools and MCP adapters"]
-    Api --> Model["LLM provider"]
-    Tools --> Timeline
-    Retrieval --> Sources
-    Api --> State
+    Api --> Policies["Policy and approval services"]
+    Api --> RetrievalLayer["Retrieval layer"]
+    Api --> Model["Model provider"]
 ```
 
-## How To Use The Cookbook
+## Start Here
 
-1. Start with [docs/architecture.md](docs/architecture.md).
-2. Pick the pattern closest to your current feature.
-3. Copy the TypeScript model as a starting contract, not a final standard.
-4. Use the Angular implementation notes to decide component, service, and state boundaries.
-5. Use the failure, accessibility, and testing sections before you ship.
+1. Read [docs/quickstart.md](docs/quickstart.md) to choose a minimal or production-shaped adoption path.
+2. Open [docs/pattern-library.md](docs/pattern-library.md) and pick the pattern closest to your current feature.
+3. Copy the related starter pack from [starter-packs/](starter-packs/README.md).
+4. Use the Angular and TypeScript example folders to map the contract into UI state and component boundaries.
 
-## Examples
+## Pattern Index
+
+### Conversation UX
+
+1. [Streaming Message UX](patterns/01-streaming-message-ux.md)
+2. [Agent State Machine](patterns/05-agent-state-machine.md)
+
+### Retrieval UX
+
+3. [RAG Source Cards](patterns/02-rag-source-cards.md)
+4. [Context Serializer](patterns/06-context-serializer.md)
+
+### Tooling UX
+
+5. [Tool-Call Timeline](patterns/03-tool-call-timeline.md)
+6. [MCP Tool UI](patterns/07-mcp-tool-ui.md)
+
+### Safety And Control
+
+7. [Action Approval Flow](patterns/04-action-approval-flow.md)
+8. [Human In The Loop](patterns/08-human-in-the-loop.md)
+9. [Enterprise Guardrails](patterns/10-enterprise-guardrails.md)
+
+### State And Reliability
+
+10. [Error Recovery And Retry](patterns/09-error-recovery-and-retry.md)
+
+## Example Packs
 
 - [Angular examples](examples/angular/README.md)
 - [TypeScript model pack](examples/typescript-models/README.md)
 - [Mock data fixtures](examples/mock-data/README.md)
+- [Starter packs](starter-packs/README.md)
 
-## What This Is Not
+## Enterprise Signal
 
-- not a claim of live production adoption
-- not a backend orchestration framework
-- not a provider SDK wrapper
-- not a mass of UI screenshots without implementation guidance
+- [Adoption guide](docs/adoption-guide.md)
+- [Comparisons against generic AI chat UI](docs/comparisons.md)
+- [Design review checklist](docs/design-review-checklist.md)
+- [Threat modeling checklist](docs/threat-modeling-checklist.md)
+- [Accessibility checklist](docs/accessibility-checklist.md)
+- [Observability checklist](docs/observability-checklist.md)
+- [Release strategy](docs/release-strategy.md)
 
-## Who This Helps
+## Compatibility
 
-- Angular developers moving into AI product engineering
-- TypeScript-heavy frontend teams designing copilot and agent UIs
-- architects standardizing RAG, tool, and approval interaction patterns
-- contributors who want practical documentation-first open source work
-- recruiters and interviewers who need fast, inspectable public proof
+- Angular: examples are written for modern standalone Angular patterns and signals.
+- TypeScript: contracts target strict TypeScript and JSON-serializable UI state.
+- Hosting: docs site is static and GitHub Pages-friendly by design.
 
-## Why Star, Watch, Or Fork
+## What This Repo Is
 
-- star it if you want a practical reference for trustworthy AI frontend design
-- watch it if you want more Angular-first examples and enterprise interaction patterns
-- fork it if you want to adapt the models, diagrams, or mock fixtures to your own copilot UI
+- a docs-and-assets reference for building serious AI frontend workflows
+- a public proof artifact for enterprise-aware Angular and TypeScript engineering
+- a reusable source of contracts, fixtures, diagrams, and implementation checklists
+
+## What This Repo Is Not
+
+- a production deployment claim
+- a hosted SaaS product
+- a backend orchestration framework
+- a drop-in UI component library
+
+## Why Star Or Watch
+
+- Star it if you want a high-signal reference for trustworthy AI UI work.
+- Fork it if you need copy-pasteable contracts, fixtures, and implementation checklists.
+- Watch it if you want the pattern library and examples to keep expanding.
 
 ## Contributing
 
-Use [CONTRIBUTING.md](CONTRIBUTING.md) and [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md) for scoped starter work. The best contributions are specific: improve one pattern page, add one diagram, add one example, or tighten one testing or accessibility checklist.
+Use [CONTRIBUTING.md](CONTRIBUTING.md), [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md), and the issue templates under [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE) for scoped work. The best contributions improve one pattern, one starter pack, one example path, or one enterprise checklist at a time.

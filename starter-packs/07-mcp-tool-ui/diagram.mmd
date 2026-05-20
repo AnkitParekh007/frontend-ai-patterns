@@ -1,0 +1,5 @@
+flowchart TD
+    Discover["Discover tool capabilities"] --> Explain["Render tool purpose"]
+    Explain --> Gate{"Permitted now?"}
+    Gate -- yes --> Execute["Run tool and show status"]
+    Gate -- no --> Blocked["Render blocked state with reason"]

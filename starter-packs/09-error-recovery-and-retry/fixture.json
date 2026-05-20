@@ -1,0 +1,10 @@
+{
+  "recovery": {
+    "id": "recover_01",
+    "cause": "Source search timed out before citations arrived.",
+    "retryable": true,
+    "nextStep": "Retry retrieval with a narrower query.",
+    "fallbackLabel": "Continue without sources",
+    "escalationPath": "Open manual search in the operator panel."
+  }
+}

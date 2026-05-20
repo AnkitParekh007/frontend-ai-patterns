@@ -79,3 +79,11 @@ export interface ApprovalRequest {
 - Shows understanding of human-in-the-loop safety in the UI, not just policy theory.
 - Demonstrates careful thinking about action previews, confirmation, and auditability.
 - Useful evidence for enterprise copilot or agent interface work.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/04-action-approval-flow/contract.ts)
+- [fixture.json](../starter-packs/04-action-approval-flow/fixture.json)
+- [diagram.mmd](../starter-packs/04-action-approval-flow/diagram.mmd)
+- [implementation checklist](../starter-packs/04-action-approval-flow/implementation-checklist.md)
+- [testing checklist](../starter-packs/04-action-approval-flow/testing-checklist.md)

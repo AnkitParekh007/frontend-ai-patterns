@@ -1,0 +1,25 @@
+name: Pattern request
+description: Propose a new frontend AI interaction pattern.
+title: "pattern: "
+labels:
+  - pattern
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What frontend problem does this pattern solve?
+    validations:
+      required: true
+  - type: textarea
+    id: why_now
+    attributes:
+      label: Why should this exist in the repo?
+      description: Explain the reuse value and enterprise relevance.
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Proposed starter-pack assets
+      description: Contract, fixture, diagram, implementation checklist, testing checklist.

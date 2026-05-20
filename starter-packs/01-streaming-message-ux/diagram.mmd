@@ -1,0 +1,9 @@
+flowchart TD
+    Submit["User submits prompt"] --> Draft["Render user message"]
+    Draft --> Pending["Create assistant placeholder"]
+    Pending --> Stream["Receive stream chunks"]
+    Stream --> Reduce["Append by messageId and sequence"]
+    Reduce --> Render["Update assistant row"]
+    Render --> Complete{"done = true?"}
+    Complete -- no --> Stream
+    Complete -- yes --> Final["Mark message complete"]

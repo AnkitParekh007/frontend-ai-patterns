@@ -1,0 +1,5 @@
+flowchart LR
+    View["Current UI view"] --> Select["Select allowed context"]
+    Select --> Redact["Strip sensitive fields"]
+    Redact --> Snapshot["Serialize context snapshot"]
+    Snapshot --> Send["Attach to orchestration request"]

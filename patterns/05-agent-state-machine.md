@@ -88,3 +88,11 @@ export type AgentViewState =
 - Shows maturity in modeling AI UX as a state system rather than a demo component.
 - Connects architecture quality directly to testability and reliability.
 - Provides strong material for system design conversations.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/05-agent-state-machine/contract.ts)
+- [fixture.json](../starter-packs/05-agent-state-machine/fixture.json)
+- [diagram.mmd](../starter-packs/05-agent-state-machine/diagram.mmd)
+- [implementation checklist](../starter-packs/05-agent-state-machine/implementation-checklist.md)
+- [testing checklist](../starter-packs/05-agent-state-machine/testing-checklist.md)

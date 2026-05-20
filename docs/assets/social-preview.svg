@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b1726"/>
+  <circle cx="1010" cy="120" r="180" fill="#0f766e" opacity="0.22"/>
+  <circle cx="160" cy="520" r="200" fill="#1d4ed8" opacity="0.16"/>
+  <text x="90" y="170" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#7dd3fc">OSS developer reference</text>
+  <text x="90" y="255" font-family="Segoe UI, sans-serif" font-size="66" font-weight="700" fill="#ffffff">Frontend AI Patterns</text>
+  <text x="90" y="320" font-family="Segoe UI, sans-serif" font-size="30" fill="#dce6f5">Angular and TypeScript patterns for trustworthy AI frontend systems.</text>
+  <text x="90" y="410" font-family="Segoe UI, sans-serif" font-size="28" fill="#99f6e4">Streaming UX • Tool timelines • Approvals • Enterprise guardrails</text>
+  <rect x="90" y="470" width="250" height="64" rx="18" fill="#ffffff"/>
+  <text x="128" y="512" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Docs + starter packs</text>
+</svg>

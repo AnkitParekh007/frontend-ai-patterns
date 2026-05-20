@@ -69,3 +69,11 @@ export interface HumanCheckpoint {
 - Shows that the repo addresses governance and user judgment, not only automation.
 - Useful for enterprise and regulated product conversations.
 - Demonstrates understanding of the difference between approval UX and broader review workflows.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/08-human-in-the-loop/contract.ts)
+- [fixture.json](../starter-packs/08-human-in-the-loop/fixture.json)
+- [diagram.mmd](../starter-packs/08-human-in-the-loop/diagram.mmd)
+- [implementation checklist](../starter-packs/08-human-in-the-loop/implementation-checklist.md)
+- [testing checklist](../starter-packs/08-human-in-the-loop/testing-checklist.md)

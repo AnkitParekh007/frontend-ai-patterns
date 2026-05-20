@@ -78,3 +78,11 @@ export interface UiContextSnapshot {
 - Demonstrates understanding of safe frontend-to-backend contracts.
 - Shows that prompt quality depends on UI architecture, not only model choice.
 - Useful for enterprise and privacy-sensitive product discussions.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/06-context-serializer/contract.ts)
+- [fixture.json](../starter-packs/06-context-serializer/fixture.json)
+- [diagram.mmd](../starter-packs/06-context-serializer/diagram.mmd)
+- [implementation checklist](../starter-packs/06-context-serializer/implementation-checklist.md)
+- [testing checklist](../starter-packs/06-context-serializer/testing-checklist.md)

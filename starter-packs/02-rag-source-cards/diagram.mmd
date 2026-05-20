@@ -1,0 +1,5 @@
+flowchart LR
+    Retrieval["Retrieved records"] --> Normalize["Normalize citation payload"]
+    Normalize --> Rank["Rank and filter evidence"]
+    Rank --> Cards["Render source cards"]
+    Cards --> Inspect["User inspects evidence before acting"]

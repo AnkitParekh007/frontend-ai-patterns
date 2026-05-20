@@ -70,3 +70,11 @@ export interface McpToolView {
 - Shows practical thinking about tool ecosystems instead of generic “agent can use tools” claims.
 - Demonstrates how protocol-level capabilities must be translated into usable UI.
 - Relevant for MCP adoption and agent workbench design.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/07-mcp-tool-ui/contract.ts)
+- [fixture.json](../starter-packs/07-mcp-tool-ui/fixture.json)
+- [diagram.mmd](../starter-packs/07-mcp-tool-ui/diagram.mmd)
+- [implementation checklist](../starter-packs/07-mcp-tool-ui/implementation-checklist.md)
+- [testing checklist](../starter-packs/07-mcp-tool-ui/testing-checklist.md)

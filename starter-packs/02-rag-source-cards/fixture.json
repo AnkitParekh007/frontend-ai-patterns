@@ -1,0 +1,20 @@
+{
+  "citations": [
+    {
+      "id": "src_001",
+      "title": "Password Rotation Policy",
+      "sourceType": "policy",
+      "snippet": "Production credentials must rotate every ninety days.",
+      "confidence": 0.93,
+      "url": "/policies/password-rotation",
+      "lastUpdatedAt": "2026-04-02"
+    },
+    {
+      "id": "src_002",
+      "title": "On-Call Playbook",
+      "sourceType": "document",
+      "snippet": "Escalate to the platform owner if rollback exceeds fifteen minutes.",
+      "confidence": 0.81
+    }
+  ]
+}

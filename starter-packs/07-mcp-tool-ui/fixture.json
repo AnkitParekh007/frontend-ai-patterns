@@ -1,0 +1,17 @@
+{
+  "tools": [
+    {
+      "id": "mcp_01",
+      "title": "GitHub repository reader",
+      "capability": "Read pull requests and issues",
+      "status": "available"
+    },
+    {
+      "id": "mcp_02",
+      "title": "Deployment trigger",
+      "capability": "Create a production deployment",
+      "status": "blocked",
+      "reason": "Requires release-manager approval"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+flowchart LR
+    Agent["Agent reaches ambiguity or risk"] --> Checkpoint["Create human checkpoint"]
+    Checkpoint --> Review["Human reviews or clarifies"]
+    Review --> Continue["Resume orchestration with decision"]

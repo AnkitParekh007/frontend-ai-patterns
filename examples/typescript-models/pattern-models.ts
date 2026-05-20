@@ -14,6 +14,7 @@ export interface StreamChunk {
   sequence: number;
   text: string;
   done: boolean;
+  emittedAt?: string;
 }
 
 export interface AssistantMessage {
@@ -21,6 +22,7 @@ export interface AssistantMessage {
   role: "user" | "assistant" | "system";
   content: string;
   status?: "draft" | "streaming" | "complete" | "failed";
+  retryToken?: string;
 }
 
 export interface RagCitation {
@@ -30,6 +32,7 @@ export interface RagCitation {
   snippet: string;
   confidence: number;
   url?: string;
+  lastUpdatedAt?: string;
 }
 
 export interface ToolTimelineItem {
@@ -46,6 +49,7 @@ export interface ToolTimelineItem {
   summary: string;
   startedAt?: string;
   finishedAt?: string;
+  auditLabel?: string;
 }
 
 export interface ApprovalRequest {
@@ -55,6 +59,7 @@ export interface ApprovalRequest {
   reason: string;
   actionSummary: string;
   decision?: "approved" | "rejected";
+  decidedAt?: string;
 }
 
 export interface UiContextSnapshot {
@@ -63,6 +68,7 @@ export interface UiContextSnapshot {
   actorRole?: string;
   visibleFields: string[];
   tenantId?: string;
+  redactions?: string[];
 }
 
 export interface RecoveryPlan {
@@ -71,4 +77,5 @@ export interface RecoveryPlan {
   retryable: boolean;
   nextStep: string;
   fallbackLabel?: string;
+  escalationPath?: string;
 }

@@ -1,0 +1,16 @@
+{
+  "name": "frontend-ai-patterns",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Angular and TypeScript patterns for trustworthy AI frontend systems.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build:site": "node scripts/build-site.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:packs": "node scripts/check-starter-packs.mjs",
+    "verify": "npm run check:links && npm run check:packs && npm run build:site"
+  }
+}

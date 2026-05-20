@@ -116,3 +116,11 @@ export interface AssistantMessage {
 - Shows understanding of partial event rendering instead of simple request-response UI.
 - Demonstrates separation between transport events and user-facing message state.
 - Surfaces accessibility and failure handling as architecture concerns, not cleanup work.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/01-streaming-message-ux/contract.ts)
+- [fixture.json](../starter-packs/01-streaming-message-ux/fixture.json)
+- [diagram.mmd](../starter-packs/01-streaming-message-ux/diagram.mmd)
+- [implementation checklist](../starter-packs/01-streaming-message-ux/implementation-checklist.md)
+- [testing checklist](../starter-packs/01-streaming-message-ux/testing-checklist.md)

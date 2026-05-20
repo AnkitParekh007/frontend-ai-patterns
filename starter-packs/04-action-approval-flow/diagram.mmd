@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> requested
+    requested --> reviewing
+    reviewing --> approved
+    reviewing --> rejected
+    approved --> executed
+    rejected --> fallback

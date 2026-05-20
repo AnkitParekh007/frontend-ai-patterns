@@ -1,0 +1,17 @@
+{
+  "context": {
+    "route": "/incidents/INC-2048",
+    "selectedRecordId": "INC-2048",
+    "actorRole": "incident_commander",
+    "visibleFields": [
+      "service",
+      "severity",
+      "status"
+    ],
+    "tenantId": "acme-prod",
+    "redactions": [
+      "customer_email",
+      "billing_account_id"
+    ]
+  }
+}

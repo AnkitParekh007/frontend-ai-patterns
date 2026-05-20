@@ -1,0 +1,17 @@
+{
+  "timeline": [
+    {
+      "id": "tool_01",
+      "toolName": "jira.createIssue",
+      "status": "queued",
+      "summary": "Prepare incident ticket draft."
+    },
+    {
+      "id": "tool_02",
+      "toolName": "pagerduty.notify",
+      "status": "awaiting_approval",
+      "summary": "Notify the on-call engineer.",
+      "auditLabel": "Notification requires human approval"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+stateDiagram-v2
+    [*] --> idle
+    idle --> thinking
+    thinking --> retrieving_context
+    retrieving_context --> planning
+    planning --> awaiting_approval
+    planning --> executing_tool
+    awaiting_approval --> executing_tool
+    executing_tool --> completed
+    executing_tool --> failed
+    failed --> recovering
+    recovering --> executing_tool

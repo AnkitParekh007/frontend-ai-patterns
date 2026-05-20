@@ -1,0 +1,5 @@
+flowchart LR
+    Request["User requests action"] --> Evaluate["Backend evaluates policy"]
+    Evaluate --> Allowed["Allowed with visible context"]
+    Evaluate --> Blocked["Blocked with reason"]
+    Evaluate --> Escalate["Route to approval or operator review"]

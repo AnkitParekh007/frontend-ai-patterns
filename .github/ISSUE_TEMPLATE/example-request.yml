@@ -1,0 +1,26 @@
+name: Example request
+description: Request a new Angular example, TypeScript contract, or mock fixture.
+title: "example: "
+labels:
+  - example
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Describe the frontend workflow you want modeled.
+    validations:
+      required: true
+  - type: dropdown
+    id: example_type
+    attributes:
+      label: Requested asset
+      options:
+        - Angular example
+        - TypeScript contract
+        - Mock fixture
+        - Starter pack
+  - type: textarea
+    id: adoption
+    attributes:
+      label: Why would this help developers fork or adopt the repo?

@@ -1,24 +1,22 @@
 ## Summary
 
-Describe the change and why it helps Angular AI frontend developers.
+- what changed
+- why it improves reuse, trust, or enterprise readiness
 
-## Type
+## Scope
 
-- [ ] Documentation
-- [ ] UI improvement
-- [ ] Accessibility
-- [ ] Test
-- [ ] Mock data/example
-- [ ] Architecture pattern
+- affected docs pages:
+- affected patterns:
+- affected examples or starter packs:
 
 ## Verification
 
-- [ ] Ran available checks or documented why not
-- [ ] Reviewed Markdown rendering
-- [ ] Added screenshot/GIF for UI changes
+- [ ] `npm run verify`
+- [ ] links checked
+- [ ] screenshots added if docs UI changed
 
-## Safety
+## Trust Checks
 
-- [ ] No secrets, tokens, .env files, or private data
-- [ ] No fake production/user claims
-- [ ] No fake stars, metrics, or testimonials
+- [ ] no fake claims, metrics, or private data
+- [ ] frontend and backend responsibilities remain clearly separated
+- [ ] failure, approval, or blocked states remain visible where relevant

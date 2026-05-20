@@ -68,3 +68,11 @@ export interface Guardrail {
 - Demonstrates enterprise awareness beyond consumer chat UI patterns.
 - Shows that safe AI UX depends on visible policy handling.
 - Strong signal for Angular roles involving internal tools, copilots, or admin systems.
+
+## Copy-Paste Starter Assets
+
+- [contract.ts](../starter-packs/10-enterprise-guardrails/contract.ts)
+- [fixture.json](../starter-packs/10-enterprise-guardrails/fixture.json)
+- [diagram.mmd](../starter-packs/10-enterprise-guardrails/diagram.mmd)
+- [implementation checklist](../starter-packs/10-enterprise-guardrails/implementation-checklist.md)
+- [testing checklist](../starter-packs/10-enterprise-guardrails/testing-checklist.md)

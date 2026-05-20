@@ -1,60 +1,93 @@
 # Contributing
 
-Thanks for considering a contribution. This project is a public proof repo for Angular AI frontend architecture, so contributions should stay practical, readable, and interview-safe.
+This repo is a public developer reference for trustworthy AI frontend patterns. Contributions should make the repo easier to fork, easier to trust, and easier to adopt without internal context.
 
-## How To Set Up Locally
+## Local Setup
 
-`ash
+```bash
 git clone https://github.com/AnkitParekh007/frontend-ai-patterns.git
 cd frontend-ai-patterns
 npm install
-`
+npm run verify
+```
 
-Run the available checks documented in the README. If this repo is documentation-only, review Markdown links and examples before opening a PR.
+The project is intentionally static-site friendly. The main checks validate links, starter-pack completeness, and site assembly.
 
-## How To Choose An Issue
+## What Good Contributions Look Like
 
-Start with [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md) or the GitHub issue templates. Good contributions improve clarity, screenshots, accessibility, examples, tests, or mock AI frontend flows.
+- One focused pattern improvement with clearer contracts, diagrams, or checklists.
+- A starter-pack enhancement that improves copy-paste value for developers.
+- A realistic Angular or TypeScript example that reflects production-shaped UI state.
+- A docs improvement that clarifies enterprise boundaries, accessibility, or failure handling.
 
-## Branch Naming
+## Contribution Standards
 
-Use a short descriptive branch name:
+- Keep all examples honest. No fake usage claims, customer names, metrics, or testimonials.
+- Prefer typed contracts over vague prose when the docs describe frontend state.
+- Keep fixtures realistic but fictional.
+- Preserve the distinction between frontend responsibility and backend policy responsibility.
+- Make loading, failure, retry, approval, and blocked states explicit.
+- Prefer small, reviewable pull requests over broad rewrites.
 
-- docs/add-rag-diagram
-- eat/add-approval-state
-- 	est/add-streaming-service-spec
-- 11y/improve-keyboard-navigation
+## Repo Structure
 
-## Commit Message Style
+- `docs/`: site pages, decision guides, and enterprise checklists
+- `patterns/`: pattern deep dives
+- `examples/`: Angular examples, TypeScript models, and mock fixtures
+- `starter-packs/`: copy-paste starter bundles for each pattern
+- `site/`: static docs shell used for GitHub Pages
 
-Use clear conventional prefixes:
+## Branch And Commit Conventions
 
-- docs: improve screenshot checklist
-- eat: add mock tool timeline state
-- 	est: cover context serializer
-- ix: correct README command
+Use short descriptive branch names:
 
-## Code Style Expectations
+- `docs/add-threat-modeling-example`
+- `feat/add-tool-approval-fixture`
+- `fix/correct-rag-citation-links`
+- `test/add-starter-pack-validation`
 
-- Keep TypeScript strict and readable.
-- Prefer typed models over loose objects.
-- Keep mock data realistic but fictional.
-- Do not add real API keys, provider tokens, private customer data, or .env files.
-- Avoid fake production claims, user counts, stars, testimonials, or benchmarks.
+Use clear commit prefixes:
 
-## Docs Contributions
+- `docs: improve quickstart adoption path`
+- `feat: add guardrail starter pack`
+- `fix: correct pages manifest links`
+- `test: validate starter pack bundles`
 
-Docs should help a reader understand the architecture in under 30 seconds. Prefer diagrams, screenshots, small code snippets, and explicit mocked-vs-real boundaries.
+## Pull Request Expectations
 
-## UI Contributions
+- Explain what changed and why it improves developer reuse or trust.
+- Link the affected docs page, pattern, example, or starter pack.
+- Include screenshots when changing docs UX or rendered visuals.
+- Include verification notes for `npm run verify`.
+- Keep claims and positioning aligned with actual repo contents.
 
-For UI changes, include a screenshot or GIF when possible. Keep enterprise UX states visible: loading, streaming, retrieving context, awaiting approval, executing, completed, failed, and recovering.
+## Pattern Quality Bar
 
-## Pull Request Checklist
+Pattern pages should answer:
 
-- [ ] Change is focused and reviewable
-- [ ] No secrets or private data
-- [ ] No fake metrics or production claims
-- [ ] README/docs updated if needed
-- [ ] Screenshot/GIF included for UI changes
-- [ ] Tests or manual verification notes included where practical
+- what problem this pattern solves
+- when it should be used
+- what anti-patterns to avoid
+- what UI contract the frontend should expose
+- what failure states must remain visible
+- what accessibility expectations apply
+- what to test before shipping
+
+Starter packs should include:
+
+- `contract.ts`
+- `fixture.json`
+- `diagram.mmd`
+- `implementation-checklist.md`
+- `testing-checklist.md`
+
+## Open A Good Issue
+
+Use the issue templates for:
+
+- new pattern proposals
+- example requests
+- docs gaps
+- bugs or broken links
+
+If you are unsure where to start, open a docs gap or example request rather than a vague feature request.

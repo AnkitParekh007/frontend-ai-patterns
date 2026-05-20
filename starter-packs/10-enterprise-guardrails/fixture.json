@@ -1,0 +1,15 @@
+{
+  "guardrails": [
+    {
+      "policy": "tenant_isolation",
+      "enforced": true,
+      "reason": "Cross-tenant search is blocked for this role.",
+      "severity": "block"
+    },
+    {
+      "policy": "approval_required_for_external_notifications",
+      "enforced": true,
+      "severity": "warning"
+    }
+  ]
+}

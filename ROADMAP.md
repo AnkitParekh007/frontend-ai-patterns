@@ -1,32 +1,36 @@
 # Roadmap
 
-## v0.2
+## Milestone 1: OSS Starter Packs
 
-- complete structured pattern pages for all core topics
-- add shared TypeScript models and mock data fixtures
-- replace placeholder doc links with a concrete Pages target and rollout plan
+- complete starter packs for all top-level patterns
+- expand Angular composition examples for conversation, tool, and approval workflows
+- tighten mock fixtures for Storybook, tests, and interview demos
+- keep docs and starter-pack contracts aligned through CI
 
-## v0.3
+## Milestone 2: Enterprise Readiness Depth
 
-- add Angular signal-based examples for two end-to-end patterns
-- add screenshot set for streaming, citations, approval, and timeline UI
-- add link validation or markdown lint workflow
+- expand threat modeling and observability examples
+- add richer audit-trail and operator workflow examples
+- publish more decision guides for permissions, persistence, and policy visibility
+- add stronger guidance for multi-tenant and regulated product surfaces
 
-## v0.4
+## Milestone 3: Docs Product Polish
 
-- publish GitHub Pages docs
-- add framework comparison notes for Angular versus React-first AI UI ecosystems
-- expand testing examples with reducer and component contract coverage
+- improve search, navigation, and visual previews on the GitHub Pages site
+- add more architecture diagrams and page-level screenshots
+- tighten social preview assets and metadata
+- continue reducing friction for first-time contributors and forkers
 
-## v0.5
+## Milestone 4: Example Depth
 
-- add enterprise playbooks for policy visibility, audit trails, and operator workflows
-- add downloadable diagram assets
-- add contributor-authored pattern variations
+- add more Angular signal-store and reducer-oriented implementations
+- expand TypeScript contracts for telemetry, citations, approvals, and recovery
+- provide more production-shaped integration flows across multiple patterns
+- add end-to-end mock walkthroughs spanning stream, retrieval, tools, and approval
 
-## v1.0
+## Milestone 5: Public Maintenance Discipline
 
-- stable docs site
-- complete example pack
-- stronger contribution flow
-- maintained issue backlog with labeled starter tasks
+- keep a clean changelog for docs, starter packs, examples, and site improvements
+- review issue backlog around reuse, trust, and enterprise frontend needs
+- package releases and docs updates as coherent public iterations
+- maintain a predictable standard for review quality and artifact completeness

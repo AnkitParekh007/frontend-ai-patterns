@@ -1,0 +1,286 @@
+{
+  "editBase": "https://github.com/AnkitParekh007/frontend-ai-patterns/edit/master/",
+  "primaryNav": [
+    { "navKey": "home", "path": "docs/site-home.md" },
+    { "navKey": "quickstart", "path": "docs/quickstart.md" },
+    { "navKey": "pattern-library", "path": "docs/pattern-library.md" },
+    { "navKey": "examples", "path": "docs/examples.md" },
+    { "navKey": "enterprise-readiness", "path": "docs/enterprise-readiness.md" },
+    { "navKey": "contributing", "path": "CONTRIBUTING.md" }
+  ],
+  "groups": [
+    {
+      "title": "Start Here",
+      "items": [
+        {
+          "label": "Home",
+          "path": "docs/site-home.md",
+          "subtitle": "Why this repo exists, what to fork, and where to start.",
+          "navKey": "home",
+          "updated": "May 2026",
+          "keywords": ["overview", "home", "fork", "star", "angular", "typescript"]
+        },
+        {
+          "label": "Quickstart",
+          "path": "docs/quickstart.md",
+          "subtitle": "Copy one pattern, one contract, or one starter pack in minutes.",
+          "navKey": "quickstart",
+          "updated": "May 2026",
+          "keywords": ["quickstart", "getting started", "copy", "starter pack"]
+        },
+        {
+          "label": "Architecture Overview",
+          "path": "docs/architecture.md",
+          "subtitle": "System boundaries for AI frontend state, tools, retrieval, and approvals.",
+          "navKey": "home",
+          "updated": "May 2026",
+          "keywords": ["architecture", "boundaries", "system"]
+        },
+        {
+          "label": "Adoption Guide",
+          "path": "docs/adoption-guide.md",
+          "subtitle": "How teams adopt one part of the repo without taking the whole stack.",
+          "navKey": "home",
+          "updated": "May 2026",
+          "keywords": ["adoption", "partial", "integration", "team"]
+        }
+      ]
+    },
+    {
+      "title": "Pattern Library",
+      "items": [
+        {
+          "label": "Pattern Library",
+          "path": "docs/pattern-library.md",
+          "subtitle": "Grouped pattern index with workflow categories and starter-pack entry points.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["pattern library", "categories", "workflow"]
+        },
+        {
+          "label": "Streaming Message UX",
+          "path": "patterns/01-streaming-message-ux.md",
+          "subtitle": "Streaming states, token assembly, and user-visible progress.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["streaming", "conversation ux", "messages"]
+        },
+        {
+          "label": "RAG Source Cards",
+          "path": "patterns/02-rag-source-cards.md",
+          "subtitle": "Inspectable citations for grounded AI responses.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["rag", "citations", "retrieval"]
+        },
+        {
+          "label": "Tool-Call Timeline",
+          "path": "patterns/03-tool-call-timeline.md",
+          "subtitle": "Visible execution state for tools, agents, and checkpoints.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["tool calling", "timeline", "agent ui"]
+        },
+        {
+          "label": "Action Approval Flow",
+          "path": "patterns/04-action-approval-flow.md",
+          "subtitle": "Human approval before risky actions.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["approval", "safety", "control"]
+        },
+        {
+          "label": "Agent State Machine",
+          "path": "patterns/05-agent-state-machine.md",
+          "subtitle": "State transitions that keep AI workflows understandable.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["state machine", "agent", "reliability"]
+        },
+        {
+          "label": "Context Serializer",
+          "path": "patterns/06-context-serializer.md",
+          "subtitle": "Safe context boundaries for frontend-to-backend orchestration.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["context", "serialization", "frontend boundary"]
+        },
+        {
+          "label": "MCP Tool UI",
+          "path": "patterns/07-mcp-tool-ui.md",
+          "subtitle": "Frontend contracts for MCP-style tool integrations.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["mcp", "tools", "registry"]
+        },
+        {
+          "label": "Human In The Loop",
+          "path": "patterns/08-human-in-the-loop.md",
+          "subtitle": "Pause, revise, approve, and operator checkpoint flows.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["human review", "operator", "checkpoint"]
+        },
+        {
+          "label": "Error Recovery And Retry",
+          "path": "patterns/09-error-recovery-and-retry.md",
+          "subtitle": "Retryable failure states and fallback guidance.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["error", "retry", "recovery"]
+        },
+        {
+          "label": "Enterprise Guardrails",
+          "path": "patterns/10-enterprise-guardrails.md",
+          "subtitle": "Policy-aware UI behavior for enterprise AI systems.",
+          "navKey": "pattern-library",
+          "updated": "May 2026",
+          "keywords": ["guardrails", "enterprise", "policy"]
+        }
+      ]
+    },
+    {
+      "title": "Examples And Assets",
+      "items": [
+        {
+          "label": "Examples Overview",
+          "path": "docs/examples.md",
+          "subtitle": "Minimal and production-shaped reuse paths for developers.",
+          "navKey": "examples",
+          "updated": "May 2026",
+          "keywords": ["examples", "angular", "typescript", "fixtures"]
+        },
+        {
+          "label": "Angular Examples",
+          "path": "examples/angular/README.md",
+          "subtitle": "Composition patterns for Angular shells, sources, tools, and recovery state.",
+          "navKey": "examples",
+          "updated": "May 2026",
+          "keywords": ["angular", "signals", "components", "store"]
+        },
+        {
+          "label": "TypeScript Models",
+          "path": "examples/typescript-models/README.md",
+          "subtitle": "Canonical contracts for messages, citations, approvals, state, and retries.",
+          "navKey": "examples",
+          "updated": "May 2026",
+          "keywords": ["typescript", "models", "contracts"]
+        },
+        {
+          "label": "Mock Data Fixtures",
+          "path": "examples/mock-data/README.md",
+          "subtitle": "JSON fixtures for streaming, citations, approvals, state, and recovery.",
+          "navKey": "examples",
+          "updated": "May 2026",
+          "keywords": ["json", "mock data", "fixtures"]
+        },
+        {
+          "label": "Starter Packs",
+          "path": "starter-packs/README.md",
+          "subtitle": "Pattern-by-pattern bundles with contract, fixture, diagram, and checklists.",
+          "navKey": "examples",
+          "updated": "May 2026",
+          "keywords": ["starter pack", "bundle", "copy paste"]
+        }
+      ]
+    },
+    {
+      "title": "Enterprise Readiness",
+      "items": [
+        {
+          "label": "Enterprise Readiness",
+          "path": "docs/enterprise-readiness.md",
+          "subtitle": "Frontend security boundaries, approvals, auditability, and rollout expectations.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["enterprise", "security", "audit", "rollout"]
+        },
+        {
+          "label": "Comparisons",
+          "path": "docs/comparisons.md",
+          "subtitle": "Why production AI UI needs more than generic chat surfaces.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["comparison", "generic chat", "trust"]
+        },
+        {
+          "label": "Design Review Checklist",
+          "path": "docs/design-review-checklist.md",
+          "subtitle": "Design review prompts for trustworthy AI UI features.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["design review", "checklist", "ux"]
+        },
+        {
+          "label": "Threat Modeling Checklist",
+          "path": "docs/threat-modeling-checklist.md",
+          "subtitle": "Frontend threat-modeling prompts for AI interactions.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["threat model", "security", "frontend"]
+        },
+        {
+          "label": "Accessibility Checklist",
+          "path": "docs/accessibility-checklist.md",
+          "subtitle": "Accessibility rules for streaming, stateful, and approval-heavy AI interfaces.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["accessibility", "a11y", "screen reader"]
+        },
+        {
+          "label": "Observability Checklist",
+          "path": "docs/observability-checklist.md",
+          "subtitle": "Frontend AI UI events worth measuring and logging.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["observability", "metrics", "events"]
+        },
+        {
+          "label": "Decision Guides",
+          "path": "docs/decision-guides.md",
+          "subtitle": "When to show approvals, tools, citations, and persisted context.",
+          "navKey": "enterprise-readiness",
+          "updated": "May 2026",
+          "keywords": ["decisions", "approvals", "tools", "citations"]
+        }
+      ]
+    },
+    {
+      "title": "Contributing",
+      "items": [
+        {
+          "label": "Contributing",
+          "path": "CONTRIBUTING.md",
+          "subtitle": "Contribution standards for docs, examples, starter packs, and trust signals.",
+          "navKey": "contributing",
+          "updated": "May 2026",
+          "keywords": ["contributing", "pull request", "quality"]
+        },
+        {
+          "label": "Roadmap",
+          "path": "ROADMAP.md",
+          "subtitle": "Milestones for site maturity, starter packs, and enterprise playbooks.",
+          "navKey": "contributing",
+          "updated": "May 2026",
+          "keywords": ["roadmap", "milestones", "future"]
+        },
+        {
+          "label": "Good First Issues",
+          "path": "GOOD_FIRST_ISSUES.md",
+          "subtitle": "Scoped issues for docs, examples, accessibility, and design improvements.",
+          "navKey": "contributing",
+          "updated": "May 2026",
+          "keywords": ["good first issue", "issues", "starter tasks"]
+        },
+        {
+          "label": "Release Strategy",
+          "path": "docs/release-strategy.md",
+          "subtitle": "How docs, starter packs, and examples evolve without breaking trust.",
+          "navKey": "contributing",
+          "updated": "May 2026",
+          "keywords": ["release", "versioning", "semver"]
+        }
+      ]
+    }
+  ]
+}

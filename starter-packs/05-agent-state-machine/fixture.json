@@ -1,0 +1,18 @@
+{
+  "states": [
+    {
+      "state": "thinking",
+      "changedAt": "2026-05-20T10:00:00Z"
+    },
+    {
+      "state": "retrieving_context",
+      "reason": "Looking up the deployment policy.",
+      "changedAt": "2026-05-20T10:00:02Z"
+    },
+    {
+      "state": "awaiting_approval",
+      "reason": "Rollback message requires review.",
+      "changedAt": "2026-05-20T10:00:10Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "assistantMessage": {
+    "id": "msg_stream_01",
+    "role": "assistant",
+    "content": "The deployment is still streaming results.",
+    "status": "streaming",
+    "retryToken": "retry-stream-01"
+  },
+  "chunks": [
+    {
+      "messageId": "msg_stream_01",
+      "sequence": 1,
+      "text": "The deployment",
+      "done": false,
+      "emittedAt": "2026-05-20T10:20:00Z"
+    },
+    {
+      "messageId": "msg_stream_01",
+      "sequence": 2,
+      "text": " is still streaming results.",
+      "done": false,
+      "emittedAt": "2026-05-20T10:20:01Z"
+    }
+  ]
+}

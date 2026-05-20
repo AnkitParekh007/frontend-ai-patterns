@@ -1,0 +1,11 @@
+{
+  "approval": {
+    "id": "approval_01",
+    "title": "Send production rollback notification",
+    "riskLevel": "high",
+    "reason": "This action affects customer-facing incident communication.",
+    "actionSummary": "Notify all subscribed stakeholders about a rollback.",
+    "decision": "approved",
+    "decidedAt": "2026-05-20T10:34:00Z"
+  }
+}

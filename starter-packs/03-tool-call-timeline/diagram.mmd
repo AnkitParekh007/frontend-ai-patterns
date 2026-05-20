@@ -1,0 +1,7 @@
+flowchart TD
+    Plan["Agent plans tool calls"] --> Queue["Add queued timeline items"]
+    Queue --> Run["Move active tool to running"]
+    Run --> Approval{"Needs approval?"}
+    Approval -- yes --> Await["Mark awaiting approval"]
+    Approval -- no --> Done["Mark success or failure"]
+    Await --> Done

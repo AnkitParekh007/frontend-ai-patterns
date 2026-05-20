@@ -1,0 +1,9 @@
+{
+  "checkpoint": {
+    "id": "hitl_01",
+    "kind": "clarification",
+    "prompt": "Choose whether the assistant should use only incident notes or also external runbooks.",
+    "resolved": false,
+    "assignedTo": "incident_commander"
+  }
+}

@@ -1,0 +1,27 @@
+name: Docs gap
+description: Request clarification or missing docs content.
+title: "docs: "
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is unclear or missing?
+      description: Focus on what blocked adoption or understanding.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Quickstart
+        - Pattern library
+        - Examples
+        - Enterprise readiness
+        - Contributing
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix

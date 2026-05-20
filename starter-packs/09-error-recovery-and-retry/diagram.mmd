@@ -1,0 +1,7 @@
+flowchart TD
+    Failure["Failure occurs"] --> Diagnose["Classify failure cause"]
+    Diagnose --> Retryable{"Retryable?"}
+    Retryable -- yes --> Retry["Offer retry path"]
+    Retryable -- no --> Fallback["Offer fallback or escalation"]
+    Retry --> Result["Resume workflow"]
+    Fallback --> Result
