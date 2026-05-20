@@ -12,6 +12,8 @@ const markdownBody = document.getElementById("markdown-body");
 const tocNav = document.getElementById("toc-nav");
 const pager = document.getElementById("pager");
 const themeButtons = Array.from(document.querySelectorAll("[data-theme-option]"));
+const themeToggleButton = document.getElementById("theme-toggle-button");
+const themeMenu = document.getElementById("theme-menu");
 const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 let manifest;
@@ -215,9 +217,34 @@ function applyTheme(preference, { persist = true, rerender = true } = {}) {
     button.setAttribute("aria-pressed", String(active));
   });
 
+  if (themeToggleButton) {
+    const label = preference.charAt(0).toUpperCase() + preference.slice(1);
+    themeToggleButton.setAttribute("aria-label", `${label} theme selected`);
+    themeToggleButton.title = `${label} theme selected`;
+  }
+
   if (rerender && currentItem) {
     loadPage();
   }
+}
+
+function closeThemeMenu() {
+  if (!themeMenu || !themeToggleButton) {
+    return;
+  }
+
+  themeMenu.hidden = true;
+  themeToggleButton.setAttribute("aria-expanded", "false");
+}
+
+function toggleThemeMenu() {
+  if (!themeMenu || !themeToggleButton) {
+    return;
+  }
+
+  const isOpen = !themeMenu.hidden;
+  themeMenu.hidden = isOpen;
+  themeToggleButton.setAttribute("aria-expanded", String(!isOpen));
 }
 
 function getMermaidTheme() {
@@ -598,7 +625,21 @@ searchInput.addEventListener("input", (event) => {
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyTheme(button.dataset.themeOption);
+    closeThemeMenu();
   });
+});
+
+themeToggleButton?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  toggleThemeMenu();
+});
+
+themeMenu?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+document.addEventListener("click", () => {
+  closeThemeMenu();
 });
 
 colorSchemeQuery.addEventListener("change", () => {

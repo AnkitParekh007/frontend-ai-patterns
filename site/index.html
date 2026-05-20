@@ -96,34 +96,47 @@
             <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"></nav>
 
             <div class="topbar-actions">
-              <div class="theme-switcher" role="group" aria-label="Theme">
+              <div class="theme-dropdown">
                 <button
-                  class="theme-button"
-                  data-theme-option="light"
+                  id="theme-toggle-button"
+                  class="theme-trigger"
                   type="button"
-                  aria-label="Light theme"
-                  title="Light theme"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-label="Theme selection"
+                  title="Theme selection"
                 >
-                  <span class="theme-icon" aria-hidden="true">☀</span>
+                  <span class="theme-icon" aria-hidden="true">◐</span>
                 </button>
-                <button
-                  class="theme-button"
-                  data-theme-option="dark"
-                  type="button"
-                  aria-label="Dark theme"
-                  title="Dark theme"
-                >
-                  <span class="theme-icon" aria-hidden="true">☾</span>
-                </button>
-                <button
-                  class="theme-button"
-                  data-theme-option="system"
-                  type="button"
-                  aria-label="System theme"
-                  title="System theme"
-                >
-                  <span class="theme-icon" aria-hidden="true">◧</span>
-                </button>
+                <div id="theme-menu" class="theme-menu" hidden>
+                  <button
+                    class="theme-menu-item"
+                    data-theme-option="light"
+                    type="button"
+                    aria-label="Light theme"
+                  >
+                    <span class="theme-item-icon" aria-hidden="true">☀</span>
+                    <span>Light</span>
+                  </button>
+                  <button
+                    class="theme-menu-item"
+                    data-theme-option="dark"
+                    type="button"
+                    aria-label="Dark theme"
+                  >
+                    <span class="theme-item-icon" aria-hidden="true">☾</span>
+                    <span>Dark</span>
+                  </button>
+                  <button
+                    class="theme-menu-item"
+                    data-theme-option="system"
+                    type="button"
+                    aria-label="System theme"
+                  >
+                    <span class="theme-item-icon" aria-hidden="true">◧</span>
+                    <span>System</span>
+                  </button>
+                </div>
               </div>
 
               <a
@@ -135,7 +148,6 @@
                 title="GitHub repository"
               >
                 <span class="repo-icon" aria-hidden="true">◎</span>
-                <span class="repo-text">GitHub</span>
               </a
               >
             </div>
