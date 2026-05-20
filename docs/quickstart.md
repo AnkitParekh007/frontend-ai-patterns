@@ -2,24 +2,28 @@
 
 ## What developers can copy today
 
-Choose the smallest reusable unit that matches your immediate need:
-
-1. **One interface**
-   - Start with [`examples/typescript-models/pattern-models.ts`](../examples/typescript-models/pattern-models.ts)
-   - Best for teams defining a contract before building UI
-2. **One fixture**
-   - Start with [`examples/mock-data/README.md`](../examples/mock-data/README.md)
-   - Best for demos, Storybook, screenshots, reducers, and state tests
-3. **One starter pack**
-   - Start with [`starter-packs/README.md`](../starter-packs/README.md)
-   - Best for building one pattern end to end with contract, diagram, and checklists
-4. **One Angular composition example**
-   - Start with [`examples/angular/README.md`](../examples/angular/README.md)
-   - Best for wiring contracts into components, stores, and service boundaries
+<section class="showcase-panel">
+  <div class="surface-grid">
+    <article class="surface-card tone-blue">
+      <strong>One interface</strong>
+      <span>Start with <a href="../examples/typescript-models/pattern-models.ts"><code>pattern-models.ts</code></a> if your team wants a contract before UI work.</span>
+    </article>
+    <article class="surface-card tone-teal">
+      <strong>One fixture</strong>
+      <span>Start with <a href="../examples/mock-data/README.md">mock data</a> for demos, screenshots, reducer tests, and Storybook-style states.</span>
+    </article>
+    <article class="surface-card tone-gold">
+      <strong>One starter pack</strong>
+      <span>Start with <a href="../starter-packs/README.md">starter packs</a> for contract, diagram, fixture, and implementation checklists in one place.</span>
+    </article>
+    <article class="surface-card tone-violet">
+      <strong>One Angular example</strong>
+      <span>Start with <a href="../examples/angular/README.md">Angular examples</a> for shell, store, component, and service boundaries.</span>
+    </article>
+  </div>
+</section>
 
 ## Minimal integration path
-
-Use this path when you only need one pattern:
 
 1. Pick a pattern from the [Pattern Library](pattern-library.md)
 2. Copy the matching `starter-packs/<pattern>/contract.ts`
@@ -29,9 +33,7 @@ Use this path when you only need one pattern:
 
 ## Production-shaped integration path
 
-Use this path when you are standardizing multiple AI UI interactions:
-
-1. Start with [`docs/architecture.md`](architecture.md)
+1. Start with [docs/architecture.md](architecture.md)
 2. Adopt the shared interfaces in [`examples/typescript-models/pattern-models.ts`](../examples/typescript-models/pattern-models.ts)
 3. Map pattern responsibilities using [`examples/angular/README.md`](../examples/angular/README.md)
 4. Add enterprise constraints from [`enterprise-readiness.md`](enterprise-readiness.md)

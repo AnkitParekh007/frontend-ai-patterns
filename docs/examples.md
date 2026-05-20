@@ -4,33 +4,28 @@
 
 The repo separates examples by **what a developer wants to reuse**, not by folder trivia.
 
-### Angular example
-
-- [`examples/angular/README.md`](../examples/angular/README.md)
-- Focus: composition boundaries, stores, services, and shell-level integration
-- Best when you already know the interaction you want and need a frontend structure
-
-### TypeScript models
-
-- [`examples/typescript-models/README.md`](../examples/typescript-models/README.md)
-- Focus: canonical interfaces for streaming, citations, tool timelines, approvals, context, and retries
-- Best when you want to standardize contracts before building views
-
-### Mock fixtures
-
-- [`examples/mock-data/README.md`](../examples/mock-data/README.md)
-- Focus: JSON payloads that can drive tests, docs previews, demos, and screenshots
-- Best when you need realistic sample state quickly
-
-### Starter packs
-
-- [`starter-packs/README.md`](../starter-packs/README.md)
-- Focus: one pattern at a time with contract, fixture, diagram, implementation checklist, and testing checklist
-- Best when you want the smallest forkable unit
+<section class="showcase-panel">
+  <div class="surface-grid">
+    <article class="surface-card tone-blue">
+      <strong>Angular example</strong>
+      <span><a href="../examples/angular/README.md">Composition boundaries, stores, services, and shell-level integration.</a></span>
+    </article>
+    <article class="surface-card tone-teal">
+      <strong>TypeScript models</strong>
+      <span><a href="../examples/typescript-models/README.md">Canonical interfaces for streaming, citations, tool timelines, approvals, context, and retries.</a></span>
+    </article>
+    <article class="surface-card tone-violet">
+      <strong>Mock fixtures</strong>
+      <span><a href="../examples/mock-data/README.md">JSON payloads that can drive tests, docs previews, demos, and screenshots.</a></span>
+    </article>
+    <article class="surface-card tone-gold">
+      <strong>Starter packs</strong>
+      <span><a href="../starter-packs/README.md">One pattern at a time with contract, fixture, diagram, implementation checklist, and testing checklist.</a></span>
+    </article>
+  </div>
+</section>
 
 ## Minimal integration path
-
-For a fast prototype:
 
 1. choose one starter pack
 2. copy the contract and fixture
@@ -38,8 +33,6 @@ For a fast prototype:
 4. follow the implementation and testing checklists
 
 ## Production-shaped integration path
-
-For a more durable internal reference:
 
 1. start with the shared model pack
 2. add the Angular composition examples

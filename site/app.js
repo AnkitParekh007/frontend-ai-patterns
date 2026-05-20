@@ -10,6 +10,8 @@ const editPageLink = document.getElementById("edit-page-link");
 const markdownBody = document.getElementById("markdown-body");
 const tocNav = document.getElementById("toc-nav");
 const pager = document.getElementById("pager");
+const themeButtons = Array.from(document.querySelectorAll("[data-theme-option]"));
+const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 let manifest;
 let flatItems = [];
@@ -20,11 +22,62 @@ marked.setOptions({
   breaks: false,
 });
 
-mermaid.initialize({
-  startOnLoad: false,
-  securityLevel: "loose",
-  theme: "neutral",
-});
+function getStoredThemePreference() {
+  return localStorage.getItem("frontend-ai-patterns-theme") || "system";
+}
+
+function getResolvedTheme(preference) {
+  if (preference === "system") {
+    return colorSchemeQuery.matches ? "dark" : "light";
+  }
+
+  return preference;
+}
+
+function applyTheme(preference, { persist = true, rerender = true } = {}) {
+  const resolvedTheme = getResolvedTheme(preference);
+  document.documentElement.dataset.themePreference = preference;
+  document.documentElement.dataset.theme = resolvedTheme;
+
+  if (persist) {
+    localStorage.setItem("frontend-ai-patterns-theme", preference);
+  }
+
+  themeButtons.forEach((button) => {
+    const active = button.dataset.themeOption === preference;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  if (rerender && currentItem) {
+    loadPage();
+  }
+}
+
+function getMermaidTheme() {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "neutral";
+}
+
+function initializeMermaid() {
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: "loose",
+    theme: getMermaidTheme(),
+    themeVariables: {
+      fontFamily: "IBM Plex Sans, sans-serif",
+      fontSize: "14px",
+      primaryTextColor:
+        document.documentElement.dataset.theme === "dark" ? "#e6eef8" : "#0f172a",
+      lineColor:
+        document.documentElement.dataset.theme === "dark" ? "#5eead4" : "#0f766e",
+    },
+    flowchart: {
+      curve: "basis",
+      useMaxWidth: true,
+      htmlLabels: true,
+    },
+  });
+}
 
 function normalizeHashPath() {
   return decodeURIComponent(window.location.hash.replace(/^#/, "")) || "docs/site-home.md";
@@ -170,6 +223,10 @@ function buildPager() {
 
 function addCodeCopyButtons() {
   markdownBody.querySelectorAll("pre").forEach((block) => {
+    if (block.querySelector(".copy-code-button")) {
+      return;
+    }
+
     const code = block.querySelector("code");
     if (!code) {
       return;
@@ -210,20 +267,36 @@ function rewriteLinksAndImages(item) {
     if (!src || /^(https?:|data:)/i.test(src)) {
       return;
     }
+
     image.src = resolveRelativePath(item.path, src);
   });
 }
 
+function wrapTables() {
+  markdownBody.querySelectorAll("table").forEach((table) => {
+    if (table.parentElement?.classList.contains("table-scroll")) {
+      return;
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "table-scroll";
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+}
+
 async function renderMermaidBlocks() {
+  initializeMermaid();
   const codeBlocks = markdownBody.querySelectorAll("pre > code");
   let counter = 0;
 
   for (const code of codeBlocks) {
     const parent = code.parentElement;
+    const content = parent.textContent.trim();
     const isMermaid =
       code.className.includes("language-mermaid") ||
-      parent.textContent.trim().startsWith("flowchart") ||
-      parent.textContent.trim().startsWith("stateDiagram");
+      content.startsWith("flowchart") ||
+      content.startsWith("stateDiagram");
 
     if (!isMermaid) {
       continue;
@@ -260,6 +333,13 @@ function setPageMeta(item) {
   };
 }
 
+function applyPageState(item) {
+  const isLanding = item.path === "docs/site-home.md";
+  document.body.dataset.navKey = item.navKey;
+  document.body.classList.toggle("is-landing", isLanding);
+  markdownBody.classList.toggle("landing-page", isLanding);
+}
+
 async function loadPage() {
   const rawHash = normalizeHashPath();
   const [path, headingId] = rawHash.split("::");
@@ -268,6 +348,7 @@ async function loadPage() {
   updateActiveNav(item);
   setPageMeta(item);
   buildPager();
+  applyPageState(item);
 
   const response = await fetch(item.path);
   if (!response.ok) {
@@ -280,6 +361,7 @@ async function loadPage() {
   markdownBody.innerHTML = marked.parse(markdown);
   rewriteLinksAndImages(item);
   applyHeadingAnchors();
+  wrapTables();
   await renderMermaidBlocks();
   addCodeCopyButtons();
   buildTOC();
@@ -290,7 +372,7 @@ async function loadPage() {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   } else {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 }
 
@@ -303,12 +385,7 @@ function runSearch(query) {
   }
 
   const results = flatItems.filter((item) => {
-    const haystack = [
-      item.label,
-      item.subtitle,
-      item.navKey,
-      ...(item.keywords ?? []),
-    ]
+    const haystack = [item.label, item.subtitle, item.navKey, ...(item.keywords ?? [])]
       .join(" ")
       .toLowerCase();
 
@@ -335,11 +412,24 @@ async function init() {
   flatItems = flattenManifestItems(manifest.groups);
   buildSidebarNav();
   buildPrimaryNav();
+  applyTheme(getStoredThemePreference(), { persist: false, rerender: false });
   await loadPage();
 }
 
 searchInput.addEventListener("input", (event) => {
   runSearch(event.target.value);
+});
+
+themeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    applyTheme(button.dataset.themeOption);
+  });
+});
+
+colorSchemeQuery.addEventListener("change", () => {
+  if (getStoredThemePreference() === "system") {
+    applyTheme("system", { persist: false });
+  }
 });
 
 window.addEventListener("hashchange", loadPage);

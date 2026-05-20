@@ -23,44 +23,93 @@
     />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./docs/assets/social-preview.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const storedTheme = localStorage.getItem("frontend-ai-patterns-theme") || "system";
+        document.documentElement.dataset.themePreference = storedTheme;
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme =
+          storedTheme === "system" ? (prefersDark ? "dark" : "light") : storedTheme;
+      })();
+    </script>
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   </head>
   <body>
+    <div class="shell-backdrop"></div>
     <div class="app-shell">
       <aside class="sidebar">
         <a class="brand-link" href="#docs/site-home.md">
-          <p class="eyebrow">OSS Developer Reference</p>
+          <p class="eyebrow">AI Frontend Reference</p>
           <h1>Frontend AI Patterns</h1>
           <p class="summary">
-            Angular and TypeScript patterns for trustworthy AI frontend systems.
+            Angular and TypeScript patterns for trustworthy AI surfaces, visible orchestration,
+            and enterprise-safe interaction design.
           </p>
         </a>
 
-        <label class="search-panel" for="search-input">
-          <span class="search-label">Search docs</span>
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search pages, patterns, and examples"
-            autocomplete="off"
-          />
-        </label>
+        <div class="sidebar-utility">
+          <span class="utility-kicker">Search docs</span>
+          <label class="search-panel" for="search-input">
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search pages, patterns, contracts"
+              autocomplete="off"
+            />
+          </label>
+        </div>
 
         <div id="search-results" class="search-results" hidden></div>
         <nav id="sidebar-nav" class="sidebar-nav" aria-label="Documentation navigation"></nav>
+
+        <div class="sidebar-footer">
+          <p>Fork the assets, not the entire stack.</p>
+          <a
+            class="sidebar-link"
+            href="https://github.com/AnkitParekh007/frontend-ai-patterns"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View repository</a
+          >
+        </div>
       </aside>
 
       <main class="main-shell">
         <header class="topbar">
-          <div class="topbar-copy">
-            <p class="eyebrow">GitHub Pages</p>
-            <h2 id="page-title">Frontend AI Patterns</h2>
-            <p id="page-subtitle" class="page-subtitle">
-              Angular-first AI UI patterns, starter packs, and enterprise-ready playbooks.
-            </p>
+          <div class="topbar-head">
+            <div class="topbar-copy">
+              <p class="eyebrow">GitHub Pages</p>
+              <h2 id="page-title">Frontend AI Patterns</h2>
+              <p id="page-subtitle" class="page-subtitle">
+                Angular-first AI UI patterns, starter packs, and enterprise-ready playbooks.
+              </p>
+            </div>
+
+            <div class="topbar-actions">
+              <div class="theme-switcher" role="group" aria-label="Theme">
+                <button class="theme-button" data-theme-option="light" type="button">Light</button>
+                <button class="theme-button" data-theme-option="dark" type="button">Dark</button>
+                <button class="theme-button" data-theme-option="system" type="button">System</button>
+              </div>
+
+              <a
+                class="repo-link"
+                href="https://github.com/AnkitParekh007/frontend-ai-patterns"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </div>
+
           <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"></nav>
         </header>
 
@@ -72,7 +121,14 @@
                 <button id="copy-path-button" class="ghost-button" type="button">Copy page path</button>
               </div>
               <div class="meta-right">
-                <a id="edit-page-link" class="ghost-link" href="#" target="_blank" rel="noopener noreferrer">Edit this page</a>
+                <a
+                  id="edit-page-link"
+                  class="ghost-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Edit this page</a
+                >
               </div>
             </div>
 
