@@ -1081,6 +1081,14 @@ body.is-landing .content-grid {
   grid-template-columns: minmax(0, 1fr);
 }
 
+body.is-landing .app-shell {
+  grid-template-columns: 1fr;
+}
+
+body.is-landing .sidebar {
+  display: none;
+}
+
 body.is-landing .toc-column,
 body.is-landing .page-meta,
 body.is-landing .pager {
@@ -1100,9 +1108,10 @@ body.is-landing .markdown-body {
 
 body.is-landing .topbar {
   position: sticky;
-  top: 16px;
+  top: 14px;
   z-index: 5;
   background: color-mix(in srgb, var(--panel-strong) 88%, transparent);
+  box-shadow: var(--shadow-lg);
 }
 
 body.is-landing .topbar-head {
@@ -1111,6 +1120,10 @@ body.is-landing .topbar-head {
 
 body.is-landing .topbar-copy {
   max-width: 780px;
+}
+
+body.is-landing .topbar {
+  margin-bottom: 24px;
 }
 
 @media (max-width: 1260px) {

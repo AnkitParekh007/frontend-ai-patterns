@@ -18,6 +18,171 @@ let manifest;
 let flatItems = [];
 let currentItem;
 
+const LANDING_PAGE_HTML = `
+  <section class="landing-hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-kicker">Angular + TypeScript + trustworthy AI UX</span>
+        <h1>Design AI interfaces that feel inspectable, controlled, and enterprise-safe.</h1>
+        <p>
+          This repo is a fork-friendly frontend reference for streaming conversations, grounded
+          citations, tool timelines, approval checkpoints, recovery states, and policy-aware UI.
+          It is built for teams that want stronger interaction contracts than a generic chat demo.
+        </p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#docs/quickstart.md">Start with one pattern</a>
+          <a class="button-secondary" href="#docs/pattern-library.md">Browse the library</a>
+          <a class="button-secondary" href="#docs/examples.md">Open reusable assets</a>
+        </div>
+        <div class="hero-stat-grid">
+          <article class="stat-card">
+            <strong>10</strong>
+            <span>pattern pages with starter-pack links, failure states, accessibility, and testing notes</span>
+          </article>
+          <article class="stat-card">
+            <strong>5</strong>
+            <span>assets per starter pack: contract, fixture, diagram, implementation, and testing checklist</span>
+          </article>
+          <article class="stat-card">
+            <strong>1</strong>
+            <span>goal: help teams adopt one trustworthy AI surface without swallowing a monolith</span>
+          </article>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <article class="stack-card">
+          <h3>Trustworthy AI frontend architecture</h3>
+          <p>Angular shell, typed state, retrieval evidence, visible tools, and enterprise checkpoints.</p>
+          <div class="stack-grid">
+            <div class="stack-node node-teal">
+              <strong>Angular shell</strong>
+              <span>messages, sources, approvals</span>
+            </div>
+            <div class="stack-node node-blue">
+              <strong>View state</strong>
+              <span>streaming, blocked, recovering</span>
+            </div>
+            <div class="stack-node node-gold">
+              <strong>Tool timeline</strong>
+              <span>intent, status, approval</span>
+            </div>
+            <div class="stack-node node-violet">
+              <strong>Citations</strong>
+              <span>grounding and evidence</span>
+            </div>
+            <div class="stack-node node-rose">
+              <strong>Context serializer</strong>
+              <span>only what the backend needs</span>
+            </div>
+            <div class="stack-node node-teal">
+              <strong>Enterprise guardrails</strong>
+              <span>approvals, audit, role, tenant</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <h2>Three proof pillars</h2>
+  <section class="showcase-panel">
+    <div class="signal-grid">
+      <article class="signal-card tone-blue">
+        <strong>Streaming UX</strong>
+        <span>Users trust AI systems more when waiting, progress, stall, retry, and completion are explicit states.</span>
+      </article>
+      <article class="signal-card tone-gold">
+        <strong>Tool and approval UX</strong>
+        <span>Developers need visible tool execution, review checkpoints, and high-risk action control instead of hidden orchestration.</span>
+      </article>
+      <article class="signal-card tone-violet">
+        <strong>Enterprise guardrails</strong>
+        <span>Real product teams need policy visibility, accessibility, audit awareness, and safe frontend boundaries.</span>
+      </article>
+    </div>
+  </section>
+
+  <h2>Start here</h2>
+  <section class="path-panel">
+    <div class="path-grid">
+      <article class="path-card">
+        <strong>Quickstart</strong>
+        <span>Copy one contract, one fixture, or one starter pack in minutes.</span>
+        <ul class="inline-list"><li><a href="#docs/quickstart.md">open quickstart</a></li></ul>
+      </article>
+      <article class="path-card">
+        <strong>Pattern Library</strong>
+        <span>Browse patterns grouped by workflow instead of a flat numbered list.</span>
+        <ul class="inline-list"><li><a href="#docs/pattern-library.md">see patterns</a></li></ul>
+      </article>
+      <article class="path-card">
+        <strong>Examples</strong>
+        <span>Choose between minimal reuse and production-shaped adoption paths.</span>
+        <ul class="inline-list"><li><a href="#docs/examples.md">open examples</a></li></ul>
+      </article>
+      <article class="path-card">
+        <strong>Enterprise Readiness</strong>
+        <span>Review frontend boundaries, observability, accessibility, and rollout expectations.</span>
+        <ul class="inline-list"><li><a href="#docs/enterprise-readiness.md">read checklist</a></li></ul>
+      </article>
+    </div>
+  </section>
+
+  <h2>Who this helps</h2>
+  <ul>
+    <li>frontend engineers building copilots, agent workflows, and retrieval-aware interfaces</li>
+    <li>Angular teams that want typed, inspectable patterns instead of generic chat demos</li>
+    <li>architects standardizing AI interaction contracts across products</li>
+    <li>maintainers who want starter-pack style assets that can be forked and adapted safely</li>
+  </ul>
+
+  <h2>Why fork this repo</h2>
+  <section class="surface-panel">
+    <h3>Every pattern ships as a starter pack</h3>
+    <p>Small enough to fork, structured enough to review, and safe enough to adapt to your own product surface.</p>
+    <div class="asset-grid">
+      <article class="asset-card tone-teal"><strong>contract.ts</strong><span>typed interface starting point for messages, tools, approvals, or recovery</span></article>
+      <article class="asset-card tone-blue"><strong>fixture.json</strong><span>demo and test payload you can drop into previews, reducers, or state stories</span></article>
+      <article class="asset-card tone-gold"><strong>diagram.mmd</strong><span>state or event flow for architecture reviews, onboarding, and design critique</span></article>
+      <article class="asset-card tone-emerald"><strong>Implementation checklist</strong><span>delivery guidance for UI state, visibility, and frontend boundaries</span></article>
+      <article class="asset-card tone-violet"><strong>Testing checklist</strong><span>acceptance coverage for failure states, accessibility, and reliability</span></article>
+    </div>
+  </section>
+  <ul>
+    <li>Every major pattern includes a repeatable bundle: <code>contract</code>, <code>fixture</code>, <code>diagram</code>, <code>implementation checklist</code>, and <code>testing checklist</code></li>
+    <li>The repo includes reusable TypeScript contracts, Angular composition notes, and mock fixtures without pretending to be a production SDK</li>
+    <li>The public docs focus on frontend responsibilities: state, accessibility, trust, and orchestration boundaries</li>
+  </ul>
+
+  <h2>What you can reuse in five minutes</h2>
+  <section class="showcase-panel">
+    <h3>Pattern previews</h3>
+    <p>Examples of the trust surfaces this repo helps teams design well.</p>
+    <div class="surface-grid">
+      <article class="surface-card tone-blue"><strong>Streaming states</strong><span>thinking, streaming, stalled, complete, failed, and retry ready</span></article>
+      <article class="surface-card tone-gold"><strong>Tool timeline</strong><span>queued, running, awaiting approval, and audit-visible outcomes</span></article>
+      <article class="surface-card tone-teal"><strong>Citation cards</strong><span>inspect evidence and source quality without losing context</span></article>
+      <article class="surface-card tone-violet"><strong>Approval gates</strong><span>high-risk actions stay human-controlled instead of silently executed</span></article>
+      <article class="surface-card tone-emerald"><strong>Recovery UI</strong><span>retry, fallback, and blocked-state clarity instead of generic error toasts</span></article>
+      <article class="surface-card tone-rose"><strong>Enterprise guardrails</strong><span>policy-aware UI, tenant context, and visible permission outcomes</span></article>
+    </div>
+  </section>
+  <ul>
+    <li><a href="#examples/typescript-models/README.md"><code>examples/typescript-models/pattern-models.ts</code></a> for canonical interface starting points</li>
+    <li><a href="#examples/mock-data/README.md"><code>examples/mock-data/</code></a> for JSON fixtures you can drop into demos or tests</li>
+    <li><a href="#starter-packs/README.md"><code>starter-packs/</code></a> for pattern-by-pattern bundles</li>
+    <li><a href="#examples/angular/README.md"><code>examples/angular/</code></a> for Angular shell and state composition examples</li>
+  </ul>
+
+  <h2>What makes this repo different</h2>
+  <ul>
+    <li>It focuses on <strong>frontend architecture</strong>, not backend orchestration frameworks</li>
+    <li>It covers <strong>operator trust surfaces</strong> like approvals, tool timelines, and audit-visible state</li>
+    <li>It treats <strong>accessibility and failure handling</strong> as design requirements, not cleanup tasks</li>
+    <li>It is intentionally <strong>documentation-first and fork-friendly</strong>, so teams can adopt pieces without taking a monolith</li>
+  </ul>
+`;
+
 marked.setOptions({
   gfm: true,
   breaks: false,
@@ -362,9 +527,14 @@ async function loadPage() {
     return;
   }
 
-  const markdown = await response.text();
-  markdownBody.innerHTML = marked.parse(markdown);
-  rewriteLinksAndImages(item);
+  if (item.path === "docs/site-home.md") {
+    markdownBody.innerHTML = LANDING_PAGE_HTML;
+  } else {
+    const markdown = await response.text();
+    markdownBody.innerHTML = marked.parse(markdown);
+    rewriteLinksAndImages(item);
+  }
+
   applyHeadingAnchors();
   wrapTables();
   await renderMermaidBlocks();
