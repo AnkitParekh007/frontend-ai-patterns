@@ -16,6 +16,9 @@
           "label": "Home",
           "path": "docs/site-home.md",
           "subtitle": "Why this repo exists, what to fork, and where to start.",
+          "headerTitle": "Frontend AI Patterns",
+          "headerSubtitle": "Angular and TypeScript patterns for trustworthy AI frontends, visible orchestration, and enterprise-safe interaction design.",
+          "headerEyebrow": "OSS Developer Reference",
           "navKey": "home",
           "updated": "May 2026",
           "keywords": ["overview", "home", "fork", "star", "angular", "typescript"]

@@ -1,5 +1,3 @@
-# Frontend AI Patterns
-
 <section class="landing-hero">
   <div class="hero-grid">
     <div class="hero-copy">

@@ -2,6 +2,7 @@ const sidebarNav = document.getElementById("sidebar-nav");
 const primaryNav = document.getElementById("primary-nav");
 const searchInput = document.getElementById("search-input");
 const searchResults = document.getElementById("search-results");
+const pageEyebrow = document.querySelector(".topbar-copy .eyebrow");
 const pageTitle = document.getElementById("page-title");
 const pageSubtitle = document.getElementById("page-subtitle");
 const pageUpdated = document.getElementById("page-updated");
@@ -320,8 +321,9 @@ function applyHeadingAnchors() {
 }
 
 function setPageMeta(item) {
-  pageTitle.textContent = item.label;
-  pageSubtitle.textContent = item.subtitle;
+  pageEyebrow.textContent = item.headerEyebrow || "GitHub Pages";
+  pageTitle.textContent = item.headerTitle || item.label;
+  pageSubtitle.textContent = item.headerSubtitle || item.subtitle;
   pageUpdated.textContent = `Updated ${item.updated}`;
   editPageLink.href = `${manifest.editBase}${item.path}`;
   copyPathButton.onclick = async () => {
@@ -338,6 +340,9 @@ function applyPageState(item) {
   document.body.dataset.navKey = item.navKey;
   document.body.classList.toggle("is-landing", isLanding);
   markdownBody.classList.toggle("landing-page", isLanding);
+  if (isLanding) {
+    pager.innerHTML = "";
+  }
 }
 
 async function loadPage() {

@@ -888,6 +888,8 @@ input {
   border-radius: 22px;
   background: var(--panel-strong);
   overflow: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .stat-card strong,
@@ -954,6 +956,8 @@ input {
   border-radius: 18px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.62);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 :root[data-theme="dark"] .stack-node {
@@ -1071,6 +1075,42 @@ input {
 
 .landing-page .toc-card {
   background: var(--panel-strong);
+}
+
+body.is-landing .content-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+body.is-landing .toc-column,
+body.is-landing .page-meta,
+body.is-landing .pager {
+  display: none;
+}
+
+body.is-landing .doc-column {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+body.is-landing .markdown-body {
+  padding: 0;
+}
+
+body.is-landing .topbar {
+  position: sticky;
+  top: 16px;
+  z-index: 5;
+  background: color-mix(in srgb, var(--panel-strong) 88%, transparent);
+}
+
+body.is-landing .topbar-head {
+  align-items: center;
+}
+
+body.is-landing .topbar-copy {
+  max-width: 780px;
 }
 
 @media (max-width: 1260px) {
