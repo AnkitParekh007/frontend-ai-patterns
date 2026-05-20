@@ -331,7 +331,7 @@ input {
 .topbar {
   max-width: 1520px;
   margin: 0 auto 18px;
-  padding: 14px 18px;
+  padding: 14px 16px;
   background: linear-gradient(180deg, rgba(10, 18, 33, 0.98), rgba(15, 24, 43, 0.98));
   border-color: rgba(107, 124, 182, 0.18);
   box-shadow: 0 20px 40px rgba(6, 10, 24, 0.18);
@@ -340,15 +340,16 @@ input {
 .topbar-head {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
   align-items: center;
 }
 
 .topbar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .product-lockup {
@@ -372,6 +373,7 @@ input {
   font-family: var(--font-display);
   font-size: 1.03rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .product-badge {
@@ -385,6 +387,7 @@ input {
   color: #c8c8ff;
   font-size: 0.78rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .page-hero {
@@ -415,9 +418,10 @@ input {
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
+  flex-wrap: nowrap;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .theme-switcher {
@@ -427,6 +431,7 @@ input {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .theme-button,
@@ -446,11 +451,16 @@ input {
 
 .theme-button {
   border: 0;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: 0;
   background: transparent;
   color: #adb8d0;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-button.active {
@@ -464,11 +474,17 @@ input {
   box-shadow: 0 12px 24px rgba(88, 98, 240, 0.24);
 }
 
+.theme-icon {
+  font-size: 0.98rem;
+  line-height: 1;
+}
+
 .repo-link {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-height: 42px;
-  padding: 0 16px;
+  padding: 0 14px;
   border-radius: 999px;
   border: 1px solid rgba(123, 145, 188, 0.2);
   background: rgba(255, 255, 255, 0.04);
@@ -477,27 +493,46 @@ input {
   font-weight: 600;
 }
 
+.repo-icon {
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.repo-text {
+  white-space: nowrap;
+}
+
 .primary-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 4px;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.primary-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .primary-link {
   display: inline-flex;
   align-items: center;
   min-height: 36px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent;
   color: #b6c1d8;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.94rem;
+  font-size: 0.91rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .primary-link:hover,
@@ -1245,6 +1280,23 @@ body.is-landing .page-hero {
   }
 }
 
+@media (max-width: 1180px) {
+  .product-badge {
+    display: none;
+  }
+
+  .repo-text {
+    display: none;
+  }
+
+  .repo-link {
+    width: 42px;
+    min-width: 42px;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .sidebar,
   .topbar,
@@ -1264,5 +1316,18 @@ body.is-landing .page-hero {
 
   .markdown-body h1 {
     font-size: 2.1rem;
+  }
+
+  .topbar {
+    padding: 12px 12px;
+  }
+
+  .product-name {
+    font-size: 0.96rem;
+  }
+
+  .primary-link {
+    padding: 0 10px;
+    font-size: 0.88rem;
   }
 }

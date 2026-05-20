@@ -97,9 +97,33 @@
 
             <div class="topbar-actions">
               <div class="theme-switcher" role="group" aria-label="Theme">
-                <button class="theme-button" data-theme-option="light" type="button">Light</button>
-                <button class="theme-button" data-theme-option="dark" type="button">Dark</button>
-                <button class="theme-button" data-theme-option="system" type="button">System</button>
+                <button
+                  class="theme-button"
+                  data-theme-option="light"
+                  type="button"
+                  aria-label="Light theme"
+                  title="Light theme"
+                >
+                  <span class="theme-icon" aria-hidden="true">☀</span>
+                </button>
+                <button
+                  class="theme-button"
+                  data-theme-option="dark"
+                  type="button"
+                  aria-label="Dark theme"
+                  title="Dark theme"
+                >
+                  <span class="theme-icon" aria-hidden="true">☾</span>
+                </button>
+                <button
+                  class="theme-button"
+                  data-theme-option="system"
+                  type="button"
+                  aria-label="System theme"
+                  title="System theme"
+                >
+                  <span class="theme-icon" aria-hidden="true">◧</span>
+                </button>
               </div>
 
               <a
@@ -107,7 +131,12 @@
                 href="https://github.com/AnkitParekh007/frontend-ai-patterns"
                 target="_blank"
                 rel="noopener noreferrer"
-                >GitHub</a
+                aria-label="GitHub repository"
+                title="GitHub repository"
+              >
+                <span class="repo-icon" aria-hidden="true">◎</span>
+                <span class="repo-text">GitHub</span>
+              </a
               >
             </div>
           </div>
