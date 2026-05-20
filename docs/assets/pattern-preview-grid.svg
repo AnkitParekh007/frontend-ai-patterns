@@ -5,22 +5,33 @@
   <text x="80" y="142" font-family="Segoe UI, sans-serif" font-size="20" fill="#4b5563">Examples of the trust surfaces the repo helps teams design well.</text>
   <g font-family="Segoe UI, sans-serif">
     <rect x="80" y="200" width="310" height="150" rx="24" fill="#eff6ff" stroke="#bfdbfe"/>
-    <text x="110" y="250" font-size="24" font-weight="700" fill="#1d4ed8">Streaming states</text>
-    <text x="110" y="288" font-size="18" fill="#334155">thinking → streaming → stalled → complete</text>
+    <text x="110" y="248" font-size="24" font-weight="700" fill="#1d4ed8">Streaming states</text>
+    <text x="110" y="282" font-size="16" fill="#334155">thinking to streaming</text>
+    <text x="110" y="304" font-size="16" fill="#334155">to stalled to complete</text>
+
     <rect x="445" y="200" width="310" height="150" rx="24" fill="#fef3c7" stroke="#fcd34d"/>
-    <text x="475" y="250" font-size="24" font-weight="700" fill="#92400e">Tool timeline</text>
-    <text x="475" y="288" font-size="18" fill="#334155">queued → running → awaiting approval</text>
+    <text x="475" y="248" font-size="24" font-weight="700" fill="#92400e">Tool timeline</text>
+    <text x="475" y="282" font-size="16" fill="#334155">queued to running to</text>
+    <text x="475" y="304" font-size="16" fill="#334155">awaiting approval</text>
+
     <rect x="810" y="200" width="310" height="150" rx="24" fill="#ecfeff" stroke="#99f6e4"/>
-    <text x="840" y="250" font-size="24" font-weight="700" fill="#115e59">Citation cards</text>
-    <text x="840" y="288" font-size="18" fill="#334155">inspect evidence and source quality</text>
+    <text x="840" y="248" font-size="24" font-weight="700" fill="#115e59">Citation cards</text>
+    <text x="840" y="282" font-size="16" fill="#334155">inspect evidence and</text>
+    <text x="840" y="304" font-size="16" fill="#334155">source quality</text>
+
     <rect x="80" y="390" width="310" height="150" rx="24" fill="#f5f3ff" stroke="#d8b4fe"/>
-    <text x="110" y="440" font-size="24" font-weight="700" fill="#6d28d9">Approval gates</text>
-    <text x="110" y="478" font-size="18" fill="#334155">high-risk actions stay human-controlled</text>
+    <text x="110" y="438" font-size="24" font-weight="700" fill="#6d28d9">Approval gates</text>
+    <text x="110" y="472" font-size="16" fill="#334155">high-risk actions stay</text>
+    <text x="110" y="494" font-size="16" fill="#334155">human-controlled</text>
+
     <rect x="445" y="390" width="310" height="150" rx="24" fill="#f0fdf4" stroke="#86efac"/>
-    <text x="475" y="440" font-size="24" font-weight="700" fill="#166534">Recovery UI</text>
-    <text x="475" y="478" font-size="18" fill="#334155">retry, fallback, and blocked-state clarity</text>
+    <text x="475" y="438" font-size="24" font-weight="700" fill="#166534">Recovery UI</text>
+    <text x="475" y="472" font-size="16" fill="#334155">retry, fallback, and</text>
+    <text x="475" y="494" font-size="16" fill="#334155">blocked-state clarity</text>
+
     <rect x="810" y="390" width="310" height="150" rx="24" fill="#fff7ed" stroke="#fdba74"/>
-    <text x="840" y="440" font-size="24" font-weight="700" fill="#c2410c">Enterprise guardrails</text>
-    <text x="840" y="478" font-size="18" fill="#334155">policy-aware UI, audit, and tenant context</text>
+    <text x="840" y="438" font-size="24" font-weight="700" fill="#c2410c">Enterprise guardrails</text>
+    <text x="840" y="472" font-size="16" fill="#334155">policy-aware UI, audit,</text>
+    <text x="840" y="494" font-size="16" fill="#334155">and tenant context</text>
   </g>
 </svg>

@@ -5,19 +5,27 @@
   <text x="80" y="144" font-family="Segoe UI, sans-serif" font-size="20" fill="#4b5563">Small enough to fork, structured enough to review, safe enough to adapt.</text>
   <g font-family="Segoe UI, sans-serif">
     <rect x="80" y="210" width="190" height="200" rx="24" fill="#ecfeff" stroke="#99f6e4"/>
-    <text x="110" y="280" font-size="26" font-weight="700" fill="#115e59">contract.ts</text>
-    <text x="110" y="318" font-size="18" fill="#334155">typed interface</text>
+    <text x="110" y="276" font-size="25" font-weight="700" fill="#115e59">contract.ts</text>
+    <text x="110" y="310" font-size="17" fill="#334155">typed interface</text>
+
     <rect x="295" y="210" width="190" height="200" rx="24" fill="#eff6ff" stroke="#bfdbfe"/>
-    <text x="325" y="280" font-size="26" font-weight="700" fill="#1d4ed8">fixture.json</text>
-    <text x="325" y="318" font-size="18" fill="#334155">demo and test payload</text>
+    <text x="325" y="276" font-size="25" font-weight="700" fill="#1d4ed8">fixture.json</text>
+    <text x="325" y="308" font-size="17" fill="#334155">demo and test</text>
+    <text x="325" y="330" font-size="17" fill="#334155">payload</text>
+
     <rect x="510" y="210" width="190" height="200" rx="24" fill="#fef3c7" stroke="#fcd34d"/>
-    <text x="540" y="280" font-size="26" font-weight="700" fill="#92400e">diagram.mmd</text>
-    <text x="540" y="318" font-size="18" fill="#334155">state or event flow</text>
+    <text x="540" y="276" font-size="25" font-weight="700" fill="#92400e">diagram.mmd</text>
+    <text x="540" y="308" font-size="17" fill="#334155">state or event</text>
+    <text x="540" y="330" font-size="17" fill="#334155">flow</text>
+
     <rect x="725" y="210" width="190" height="200" rx="24" fill="#f0fdf4" stroke="#86efac"/>
-    <text x="755" y="280" font-size="22" font-weight="700" fill="#166534">implementation</text>
-    <text x="755" y="318" font-size="18" fill="#334155">delivery checklist</text>
+    <text x="755" y="272" font-size="20" font-weight="700" fill="#166534">implementation</text>
+    <text x="755" y="304" font-size="20" font-weight="700" fill="#166534">checklist</text>
+    <text x="755" y="336" font-size="17" fill="#334155">delivery guidance</text>
+
     <rect x="940" y="210" width="190" height="200" rx="24" fill="#f5f3ff" stroke="#d8b4fe"/>
-    <text x="970" y="280" font-size="22" font-weight="700" fill="#6d28d9">testing</text>
-    <text x="970" y="318" font-size="18" fill="#334155">acceptance checklist</text>
+    <text x="970" y="272" font-size="20" font-weight="700" fill="#6d28d9">testing</text>
+    <text x="970" y="304" font-size="20" font-weight="700" fill="#6d28d9">checklist</text>
+    <text x="970" y="336" font-size="17" fill="#334155">acceptance guide</text>
   </g>
 </svg>
