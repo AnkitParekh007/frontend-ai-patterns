@@ -1,25 +1,33 @@
 # Roadmap
 
-## Milestone 1: OSS Starter Packs
+## Ranked Execution Priorities
+
+1. Keep GitHub-first surfaces strong: README clarity, architecture visuals, copyable asset entry points, and social preview polish.
+2. Expand proof surfaces: better demos, screenshots, and end-to-end walkthroughs for streaming, tool, citation, and approval UX.
+3. Deepen reuse assets: more starter packs, more fixtures, and more Angular composition examples.
+4. Strengthen enterprise guidance: rollout, observability, accessibility, and operator-trust checklists.
+5. Keep the contributor funnel easy: scoped issues, clear review standards, and fast local verification.
+
+## Milestone 1: Demo And Reuse Conversion
+
+- expand the demo gallery with citation and recovery states
+- add more screenshots and short GIF walkthroughs for the README and docs site
+- keep `Quickstart`, `Demo Gallery`, and `Use Cases` aligned as the first-stop onboarding path
+- make every high-traffic page point to a concrete starter pack or fixture
+
+## Milestone 2: OSS Starter Packs
 
 - complete starter packs for all top-level patterns
 - expand Angular composition examples for conversation, tool, and approval workflows
 - tighten mock fixtures for Storybook, tests, and interview demos
 - keep docs and starter-pack contracts aligned through CI
 
-## Milestone 2: Enterprise Readiness Depth
+## Milestone 3: Enterprise Readiness Depth
 
 - expand threat modeling and observability examples
 - add richer audit-trail and operator workflow examples
 - publish more decision guides for permissions, persistence, and policy visibility
 - add stronger guidance for multi-tenant and regulated product surfaces
-
-## Milestone 3: Docs Product Polish
-
-- improve search, navigation, and visual previews on the GitHub Pages site
-- add more architecture diagrams and page-level screenshots
-- tighten social preview assets and metadata
-- continue reducing friction for first-time contributors and forkers
 
 ## Milestone 4: Example Depth
 

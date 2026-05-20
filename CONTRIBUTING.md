@@ -13,6 +13,13 @@ npm run verify
 
 The project is intentionally static-site friendly. The main checks validate links, starter-pack completeness, and site assembly.
 
+## Highest-Value Contribution Types
+
+- Improve one starter pack so a developer can copy it into a product faster.
+- Add one realistic fixture, screenshot, or demo state that makes the site feel more product-shaped.
+- Clarify one trust surface such as streaming, citations, tools, approval, recovery, or audit visibility.
+- Tighten one enterprise checklist with a sharper frontend boundary or rollout concern.
+
 ## What Good Contributions Look Like
 
 - One focused pattern improvement with clearer contracts, diagrams, or checklists.
@@ -31,7 +38,7 @@ The project is intentionally static-site friendly. The main checks validate link
 
 ## Repo Structure
 
-- `docs/`: site pages, decision guides, and enterprise checklists
+- `docs/`: site pages, demo gallery, use cases, decision guides, and enterprise checklists
 - `patterns/`: pattern deep dives
 - `examples/`: Angular examples, TypeScript models, and mock fixtures
 - `starter-packs/`: copy-paste starter bundles for each pattern
@@ -41,7 +48,7 @@ The project is intentionally static-site friendly. The main checks validate link
 
 Use short descriptive branch names:
 
-- `docs/add-threat-modeling-example`
+- `docs/add-citation-demo-state`
 - `feat/add-tool-approval-fixture`
 - `fix/correct-rag-citation-links`
 - `test/add-starter-pack-validation`
@@ -55,7 +62,7 @@ Use clear commit prefixes:
 
 ## Pull Request Expectations
 
-- Explain what changed and why it improves developer reuse or trust.
+- Explain what changed and why it improves developer reuse, proof, or trust.
 - Link the affected docs page, pattern, example, or starter pack.
 - Include screenshots when changing docs UX or rendered visuals.
 - Include verification notes for `npm run verify`.

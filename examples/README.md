@@ -2,6 +2,13 @@
 
 The examples are split by reuse surface so teams can lift only the part they need.
 
+## Copy first, then adapt
+
+- Want shared frontend contracts: start with [TypeScript Models](typescript-models/README.md)
+- Want realistic UI states: start with [Mock Fixtures](mock-data/README.md)
+- Want shell and store boundaries: start with [Angular Example](angular/README.md)
+- Want a forkable bundle for one pattern: start with [Starter Packs](../starter-packs/README.md)
+
 ## Angular Example
 
 - [Angular composition notes](angular/README.md)
@@ -43,3 +50,8 @@ Each starter pack includes a contract, fixture, diagram, implementation checklis
 2. Use `examples/typescript-models/pattern-models.ts` as the shared frontend contract layer.
 3. Use the Angular examples to define stores, facades, and presentational components.
 4. Validate the behavior against the enterprise checklists under `docs/`.
+
+## See It Before You Fork It
+
+- [Demo Gallery](../docs/demo-gallery.md)
+- [Use Cases](../docs/use-cases.md)

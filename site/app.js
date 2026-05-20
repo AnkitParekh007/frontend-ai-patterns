@@ -32,8 +32,9 @@ const LANDING_PAGE_HTML = `
           It is built for teams that want stronger interaction contracts than a generic chat demo.
         </p>
         <div class="hero-actions">
+          <a class="button-primary" href="#docs/demo-gallery.md">Open demo gallery</a>
           <a class="button-primary" href="#docs/quickstart.md">Start with one pattern</a>
-          <a class="button-secondary" href="#docs/pattern-library.md">Browse the library</a>
+          <a class="button-secondary" href="#docs/use-cases.md">Match a real use case</a>
           <a class="button-secondary" href="#docs/examples.md">Open reusable assets</a>
         </div>
         <div class="hero-stat-grid">
@@ -108,19 +109,24 @@ const LANDING_PAGE_HTML = `
   <section class="path-panel">
     <div class="path-grid">
       <article class="path-card">
+        <strong>Demo Gallery</strong>
+        <span>Inspect streaming, tool, and approval behavior before reading every pattern page.</span>
+        <ul class="inline-list"><li><a href="#docs/demo-gallery.md">open demos</a></li></ul>
+      </article>
+      <article class="path-card">
         <strong>Quickstart</strong>
         <span>Copy one contract, one fixture, or one starter pack in minutes.</span>
         <ul class="inline-list"><li><a href="#docs/quickstart.md">open quickstart</a></li></ul>
       </article>
       <article class="path-card">
+        <strong>Use Cases</strong>
+        <span>Map the repo to internal copilots, support workspaces, enterprise search, and approval-heavy consoles.</span>
+        <ul class="inline-list"><li><a href="#docs/use-cases.md">open use cases</a></li></ul>
+      </article>
+      <article class="path-card">
         <strong>Pattern Library</strong>
         <span>Browse patterns grouped by workflow instead of a flat numbered list.</span>
         <ul class="inline-list"><li><a href="#docs/pattern-library.md">see patterns</a></li></ul>
-      </article>
-      <article class="path-card">
-        <strong>Examples</strong>
-        <span>Choose between minimal reuse and production-shaped adoption paths.</span>
-        <ul class="inline-list"><li><a href="#docs/examples.md">open examples</a></li></ul>
       </article>
       <article class="path-card">
         <strong>Enterprise Readiness</strong>
@@ -156,6 +162,18 @@ const LANDING_PAGE_HTML = `
     <li>The public docs focus on frontend responsibilities: state, accessibility, trust, and orchestration boundaries</li>
   </ul>
 
+  <h2>Built for real product surfaces</h2>
+  <section class="showcase-panel">
+    <div class="surface-grid">
+      <article class="surface-card tone-blue"><strong>Internal copilot</strong><span>citations, guardrails, and approval-aware tool actions for employee workflows</span></article>
+      <article class="surface-card tone-gold"><strong>Support workspace</strong><span>visible tool steps, recoverable errors, and human checkpoints for operators</span></article>
+      <article class="surface-card tone-teal"><strong>Enterprise search</strong><span>grounded answers with evidence cards and fallback guidance</span></article>
+      <article class="surface-card tone-violet"><strong>Approval console</strong><span>policy-aware action gates, role signals, and audit-visible outcomes</span></article>
+      <article class="surface-card tone-emerald"><strong>Design system seed</strong><span>starter packs teams can internalize as typed trust surfaces</span></article>
+      <article class="surface-card tone-rose"><strong>Architecture review pack</strong><span>diagrams, fixtures, and checklists for PRs, demos, and onboarding</span></article>
+    </div>
+  </section>
+
   <h2>What you can reuse in five minutes</h2>
   <section class="showcase-panel">
     <h3>Pattern previews</h3>
@@ -183,6 +201,122 @@ const LANDING_PAGE_HTML = `
     <li>It treats <strong>accessibility and failure handling</strong> as design requirements, not cleanup tasks</li>
     <li>It is intentionally <strong>documentation-first and fork-friendly</strong>, so teams can adopt pieces without taking a monolith</li>
   </ul>
+`;
+
+const DEMO_GALLERY_HTML = `
+  <section class="demo-shell">
+    <div class="demo-copy">
+      <span class="hero-kicker">Interactive proof surface</span>
+      <h1>Inspect the trust surfaces before you fork the assets.</h1>
+      <p>
+        This mini gallery turns the repo’s strongest patterns into visible behavior. Use it to
+        decide whether you need streaming state contracts, tool execution UX, or approval flows first.
+      </p>
+    </div>
+
+    <div class="demo-tabs" role="tablist" aria-label="Demo gallery">
+      <button class="demo-tab active" type="button" role="tab" aria-selected="true" data-demo-tab="streaming">Streaming states</button>
+      <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="timeline">Tool timeline</button>
+      <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="approval">Approval gate</button>
+    </div>
+
+    <section class="demo-panel active" data-demo-panel="streaming">
+      <div class="demo-grid">
+        <article class="demo-stage">
+          <div class="chat-preview">
+            <div class="chat-row is-user"><span>Summarize the change request and flag risky operations.</span></div>
+            <div class="chat-row is-ai state-thinking"><span>Thinking: checking policy, retrieval, and prior actions</span></div>
+            <div class="chat-row is-ai state-streaming"><span>Streaming: gathering evidence, outlining tool intent, and drafting the response</span></div>
+            <div class="chat-row is-ai state-stalled"><span>Stalled: waiting on retrieval timeout, offer retry or fallback</span></div>
+            <div class="chat-row is-ai state-complete"><span>Complete: answer ready with citations and next-step actions</span></div>
+          </div>
+        </article>
+        <article class="demo-notes">
+          <h3>What this demo proves</h3>
+          <ul>
+            <li>Waiting, streaming, stall, recovery, and completion are separate user-visible states.</li>
+            <li>Retry guidance belongs in the UI contract, not only in logs.</li>
+            <li>Developers can seed this surface with shared contracts and one fixture.</li>
+          </ul>
+          <div class="demo-meta-grid">
+            <div class="demo-meta-card"><strong>Starter pack</strong><span><a href="#starter-packs/01-streaming-message-ux/implementation-checklist.md">01-streaming-message-ux</a></span></div>
+            <div class="demo-meta-card"><strong>Fixture</strong><span><a href="#examples/mock-data/stream-events.json">stream-events.json</a></span></div>
+            <div class="demo-meta-card"><strong>Pattern</strong><span><a href="#patterns/01-streaming-message-ux.md">Streaming Message UX</a></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo-panel" data-demo-panel="timeline" hidden>
+      <div class="demo-grid">
+        <article class="demo-stage">
+          <div class="timeline-preview">
+            <div class="timeline-item is-complete"><strong>Search CRM</strong><span>completed with 3 records</span></div>
+            <div class="timeline-item is-running"><strong>Draft refund plan</strong><span>running model + pricing tool</span></div>
+            <div class="timeline-item is-blocked"><strong>Apply refund</strong><span>awaiting human approval</span></div>
+            <div class="timeline-item is-pending"><strong>Send follow-up email</strong><span>queued until approval resolves</span></div>
+          </div>
+        </article>
+        <article class="demo-notes">
+          <h3>What this demo proves</h3>
+          <ul>
+            <li>Tool steps should remain visible instead of collapsing into a spinner.</li>
+            <li>Blocked actions need clear operator ownership and status language.</li>
+            <li>This surface creates better demos, audits, and support debugging.</li>
+          </ul>
+          <div class="demo-meta-grid">
+            <div class="demo-meta-card"><strong>Starter pack</strong><span><a href="#starter-packs/03-tool-call-timeline/implementation-checklist.md">03-tool-call-timeline</a></span></div>
+            <div class="demo-meta-card"><strong>Fixture</strong><span><a href="#examples/mock-data/tool-timeline.json">tool-timeline.json</a></span></div>
+            <div class="demo-meta-card"><strong>Pattern</strong><span><a href="#patterns/03-tool-call-timeline.md">Tool-Call Timeline</a></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo-panel" data-demo-panel="approval" hidden>
+      <div class="demo-grid">
+        <article class="demo-stage">
+          <div class="approval-preview">
+            <div class="approval-head">
+              <strong>Approval required: reset account permissions</strong>
+              <span>High-risk action with tenant and policy impact</span>
+            </div>
+            <div class="approval-body">
+              <div class="approval-chip tone-gold">Risk: elevated</div>
+              <div class="approval-chip tone-blue">Requested by tool orchestrator</div>
+              <div class="approval-chip tone-violet">Policy: role escalation</div>
+            </div>
+            <div class="approval-actions">
+              <button type="button" class="mini-button allow">Approve with note</button>
+              <button type="button" class="mini-button deny">Reject and explain</button>
+            </div>
+          </div>
+        </article>
+        <article class="demo-notes">
+          <h3>What this demo proves</h3>
+          <ul>
+            <li>Risky actions should stop for review instead of silently executing.</li>
+            <li>Policy context, role context, and the requested action must stay visible together.</li>
+            <li>A forkable approval surface is more reusable than a generic confirmation modal.</li>
+          </ul>
+          <div class="demo-meta-grid">
+            <div class="demo-meta-card"><strong>Starter pack</strong><span><a href="#starter-packs/04-action-approval-flow/implementation-checklist.md">04-action-approval-flow</a></span></div>
+            <div class="demo-meta-card"><strong>Fixture</strong><span><a href="#examples/mock-data/approval-request.json">approval-request.json</a></span></div>
+            <div class="demo-meta-card"><strong>Pattern</strong><span><a href="#patterns/04-action-approval-flow.md">Action Approval Flow</a></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </section>
+
+  <h2>Where to copy from next</h2>
+  <section class="showcase-panel">
+    <div class="asset-grid">
+      <article class="asset-card tone-blue"><strong>Contract first</strong><span>Open <a href="#examples/typescript-models/README.md">TypeScript models</a> if your team needs a stable frontend state language.</span></article>
+      <article class="asset-card tone-teal"><strong>Fixture first</strong><span>Open <a href="#examples/mock-data/README.md">mock data</a> if you need demos, reducer tests, or screenshots fast.</span></article>
+      <article class="asset-card tone-violet"><strong>Starter pack first</strong><span>Open <a href="#starter-packs/README.md">starter packs</a> if you want one safe pattern bundle to fork internally.</span></article>
+    </div>
+  </section>
 `;
 
 marked.setOptions({
@@ -529,12 +663,43 @@ function setPageMeta(item) {
 
 function applyPageState(item) {
   const isLanding = item.path === "docs/site-home.md";
+  const isDemoGallery = item.path === "docs/demo-gallery.md";
   document.body.dataset.navKey = item.navKey;
   document.body.classList.toggle("is-landing", isLanding);
+  document.body.classList.toggle("is-demo-gallery", isDemoGallery);
   markdownBody.classList.toggle("landing-page", isLanding);
   if (isLanding) {
     pager.innerHTML = "";
   }
+}
+
+function setupDemoGalleryInteractions() {
+  const tabs = Array.from(markdownBody.querySelectorAll("[data-demo-tab]"));
+  const panels = Array.from(markdownBody.querySelectorAll("[data-demo-panel]"));
+
+  if (!tabs.length || !panels.length) {
+    return;
+  }
+
+  const activateTab = (target) => {
+    tabs.forEach((tab) => {
+      const active = tab.dataset.demoTab === target;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", String(active));
+    });
+
+    panels.forEach((panel) => {
+      const active = panel.dataset.demoPanel === target;
+      panel.classList.toggle("active", active);
+      panel.hidden = !active;
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.demoTab);
+    });
+  });
 }
 
 async function loadPage() {
@@ -556,6 +721,8 @@ async function loadPage() {
 
   if (item.path === "docs/site-home.md") {
     markdownBody.innerHTML = LANDING_PAGE_HTML;
+  } else if (item.path === "docs/demo-gallery.md") {
+    markdownBody.innerHTML = DEMO_GALLERY_HTML;
   } else {
     const markdown = await response.text();
     markdownBody.innerHTML = marked.parse(markdown);
@@ -566,6 +733,9 @@ async function loadPage() {
   wrapTables();
   await renderMermaidBlocks();
   addCodeCopyButtons();
+  if (item.path === "docs/demo-gallery.md") {
+    setupDemoGalleryInteractions();
+  }
   buildTOC();
 
   if (headingId) {

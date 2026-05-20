@@ -2,11 +2,12 @@
   "editBase": "https://github.com/AnkitParekh007/frontend-ai-patterns/edit/master/",
   "primaryNav": [
     { "navKey": "home", "path": "docs/site-home.md" },
+    { "navKey": "demo-gallery", "path": "docs/demo-gallery.md" },
     { "navKey": "quickstart", "path": "docs/quickstart.md" },
+    { "navKey": "use-cases", "path": "docs/use-cases.md" },
     { "navKey": "pattern-library", "path": "docs/pattern-library.md" },
     { "navKey": "examples", "path": "docs/examples.md" },
-    { "navKey": "enterprise-readiness", "path": "docs/enterprise-readiness.md" },
-    { "navKey": "contributing", "path": "CONTRIBUTING.md" }
+    { "navKey": "enterprise-readiness", "path": "docs/enterprise-readiness.md" }
   ],
   "groups": [
     {
@@ -22,6 +23,17 @@
           "navKey": "home",
           "updated": "May 2026",
           "keywords": ["overview", "home", "fork", "star", "angular", "typescript"]
+        },
+        {
+          "label": "Demo Gallery",
+          "path": "docs/demo-gallery.md",
+          "subtitle": "Interactive proof surfaces for streaming, tool execution, and approvals.",
+          "headerTitle": "Demo Gallery",
+          "headerSubtitle": "Inspect the repo's strongest trust surfaces before you fork the underlying assets.",
+          "headerEyebrow": "Interactive Preview",
+          "navKey": "demo-gallery",
+          "updated": "May 2026",
+          "keywords": ["demo", "gallery", "interactive", "streaming", "tool timeline", "approval"]
         },
         {
           "label": "Quickstart",
@@ -46,6 +58,22 @@
           "navKey": "home",
           "updated": "May 2026",
           "keywords": ["adoption", "partial", "integration", "team"]
+        }
+      ]
+    },
+    {
+      "title": "Product Use Cases",
+      "items": [
+        {
+          "label": "Use Cases",
+          "path": "docs/use-cases.md",
+          "subtitle": "Map the assets to internal copilots, support workspaces, enterprise search, and approval consoles.",
+          "headerTitle": "Use Cases",
+          "headerSubtitle": "Choose the right pattern pack by starting from a real product surface instead of a folder tree.",
+          "headerEyebrow": "Product Fit",
+          "navKey": "use-cases",
+          "updated": "May 2026",
+          "keywords": ["use cases", "internal copilot", "support workspace", "enterprise search", "approval"]
         }
       ]
     },

@@ -1,39 +1,60 @@
 # Frontend AI Patterns
 
-Angular and TypeScript patterns for trustworthy AI frontends. This repo is a reusable reference library for streaming chat, RAG evidence, tool execution UX, approvals, state recovery, and enterprise guardrails.
+Angular and TypeScript patterns for trustworthy AI frontends. This repo is a fork-friendly reference library for streaming UX, grounded citations, tool execution UI, approval flows, recovery states, and enterprise-safe interaction boundaries.
 
-[Open the live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Quickstart](docs/quickstart.md) | [Pattern Library](docs/pattern-library.md) | [Examples](docs/examples.md) | [Enterprise Readiness](docs/enterprise-readiness.md)
+[Live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Quickstart](docs/quickstart.md) | [Demo Gallery](docs/demo-gallery.md) | [Use Cases](docs/use-cases.md) | [Pattern Library](docs/pattern-library.md)
 
 ![Architecture overview](docs/assets/architecture-overview.svg)
 
-## Why This Repo Is Worth Forking
+## Copy This In Five Minutes
 
-- Copy typed contracts for streaming, citations, approvals, recovery, and context state.
-- Reuse JSON fixtures for demos, tests, Storybook states, and onboarding.
-- Start from Angular composition examples without adopting a full framework.
-- Use the starter packs to lift one pattern into your app in under an hour.
-- Keep enterprise concerns visible: auditability, approvals, guardrails, accessibility, and failure states.
+- [TypeScript contracts](examples/typescript-models/pattern-models.ts) for streaming, citations, approvals, retry, and context state
+- [JSON fixtures](examples/mock-data/README.md) for demos, reducer tests, screenshots, and Storybook-style previews
+- [Angular composition examples](examples/angular/README.md) for shell, store, service, and approval boundaries
+- [Starter packs](starter-packs/README.md) that bundle `contract.ts`, `fixture.json`, `diagram.mmd`, `implementation-checklist.md`, and `testing-checklist.md`
+- [Demo gallery](docs/demo-gallery.md) that shows the repo’s trust surfaces as product behavior instead of only prose
 
-## What You Can Reuse In Five Minutes
+## Why Developers Fork This Repo
 
-- [Canonical TypeScript contracts](examples/typescript-models/pattern-models.ts)
-- [Angular shell composition examples](examples/angular/README.md)
-- [Mock fixtures for realistic UI states](examples/mock-data/README.md)
-- [Starter packs with contract, fixture, diagram, and checklists](starter-packs/README.md)
-- [Decision guides for approvals, tool visibility, citations, and persistence](docs/decision-guides.md)
+- Fork it to bootstrap a trustworthy AI UI contract layer without inventing message, citation, approval, and retry state from scratch.
+- Fork it to seed previews, tests, and demo data with realistic fixtures instead of fake one-line payloads.
+- Fork it to standardize visible trust surfaces like tool timelines, approval gates, and grounded citations across products.
+- Fork it to turn one pattern into an internal starter pack without taking a monolithic framework.
+
+## What This Repo Proves
+
+- **Streaming UX is a state machine problem**, not just a chat bubble problem.
+- **Grounded AI responses need inspectable evidence**, not hidden retrieval.
+- **Tool execution should be visible and reviewable**, especially when the action is risky or destructive.
+- **Recovery and accessibility are core interaction requirements**, not cleanup tasks after the happy path works.
+- **Enterprise-safe AI UI can be documented as contracts, fixtures, diagrams, and checklists**, not only as screenshots.
 
 ## Visual Preview
 
 ![Pattern preview grid](docs/assets/pattern-preview-grid.svg)
 
-The docs site is organized like a product, not a README mirror:
+## Start With A Real Need
 
-- `Home`: value proposition, architecture, proof pillars, reuse paths
-- `Quickstart`: what to copy, where to start, minimal and production-shaped paths
-- `Pattern Library`: grouped patterns with repeatable templates and linked packs
-- `Examples`: Angular examples, TypeScript models, mock fixtures, starter packs
-- `Enterprise Readiness`: frontend boundaries, approvals, observability, rollout checks
-- `Contributing`: contribution standards for high-trust public artifacts
+### Use Cases
+
+- [Internal copilot](docs/use-cases.md#internal-copilot) for policy-aware employee workflows
+- [Support agent workspace](docs/use-cases.md#support-agent-workspace) for visible tools and human review
+- [Enterprise search](docs/use-cases.md#enterprise-search) for citations, filters, and retrieval trust
+- [Approval-heavy operations console](docs/use-cases.md#approval-heavy-operations-console) for risky actions and audit visibility
+
+### Demo Surfaces
+
+- [Streaming states](docs/demo-gallery.md#streaming-states-demo)
+- [Tool timeline](docs/demo-gallery.md#tool-timeline-demo)
+- [Approval gate](docs/demo-gallery.md#approval-gate-demo)
+
+## Open The Right Surface First
+
+- `Quickstart`: copy one contract, one fixture, or one starter pack in minutes
+- `Demo Gallery`: inspect high-signal product behaviors before reading every pattern page
+- `Pattern Library`: browse workflow-based patterns with failure modes, accessibility, and tests
+- `Examples`: choose between minimal reuse and production-shaped adoption
+- `Enterprise Readiness`: pressure-test rollout expectations before shipping
 
 ## Architecture Map
 
@@ -53,13 +74,6 @@ flowchart LR
     Api --> RetrievalLayer["Retrieval layer"]
     Api --> Model["Model provider"]
 ```
-
-## Start Here
-
-1. Read [docs/quickstart.md](docs/quickstart.md) to choose a minimal or production-shaped adoption path.
-2. Open [docs/pattern-library.md](docs/pattern-library.md) and pick the pattern closest to your current feature.
-3. Copy the related starter pack from [starter-packs/](starter-packs/README.md).
-4. Use the Angular and TypeScript example folders to map the contract into UI state and component boundaries.
 
 ## Pattern Index
 
@@ -88,48 +102,51 @@ flowchart LR
 
 10. [Error Recovery And Retry](patterns/09-error-recovery-and-retry.md)
 
-## Example Packs
+## Reuse Paths
 
-- [Angular examples](examples/angular/README.md)
-- [TypeScript model pack](examples/typescript-models/README.md)
-- [Mock data fixtures](examples/mock-data/README.md)
-- [Starter packs](starter-packs/README.md)
+### Minimal Integration Path
 
-## Enterprise Signal
+1. Copy one contract from `examples/typescript-models/pattern-models.ts`.
+2. Copy the matching fixture from `examples/mock-data/`.
+3. Use the linked starter-pack checklist to wire the feature into your own reducer, store, or component tree.
 
+### Production-Shaped Path
+
+1. Start from the matching starter pack in `starter-packs/`.
+2. Use the shared TypeScript contracts as the public UI state layer.
+3. Adapt the Angular examples into your shell, store, and service boundaries.
+4. Run the enterprise checklists before rollout.
+
+## Repo Entry Points
+
+- [Examples overview](docs/examples.md)
 - [Adoption guide](docs/adoption-guide.md)
 - [Comparisons against generic AI chat UI](docs/comparisons.md)
+- [Decision guides](docs/decision-guides.md)
 - [Design review checklist](docs/design-review-checklist.md)
 - [Threat modeling checklist](docs/threat-modeling-checklist.md)
 - [Accessibility checklist](docs/accessibility-checklist.md)
 - [Observability checklist](docs/observability-checklist.md)
-- [Release strategy](docs/release-strategy.md)
 
 ## Compatibility
 
-- Angular: examples are written for modern standalone Angular patterns and signals.
+- Angular: examples are written for standalone Angular and signal-oriented state patterns.
 - TypeScript: contracts target strict TypeScript and JSON-serializable UI state.
-- Hosting: docs site is static and GitHub Pages-friendly by design.
+- Hosting: the docs site is static and GitHub Pages-friendly by design.
 
 ## What This Repo Is
 
-- a docs-and-assets reference for building serious AI frontend workflows
-- a public proof artifact for enterprise-aware Angular and TypeScript engineering
+- a docs-and-assets reference for production-minded AI frontend work
 - a reusable source of contracts, fixtures, diagrams, and implementation checklists
+- a public engineering artifact focused on trust, state, and enterprise-safe interaction design
 
 ## What This Repo Is Not
 
-- a production deployment claim
 - a hosted SaaS product
 - a backend orchestration framework
 - a drop-in UI component library
-
-## Why Star Or Watch
-
-- Star it if you want a high-signal reference for trustworthy AI UI work.
-- Fork it if you need copy-pasteable contracts, fixtures, and implementation checklists.
-- Watch it if you want the pattern library and examples to keep expanding.
+- a claim that frontend trust work can replace backend policy enforcement
 
 ## Contributing
 
-Use [CONTRIBUTING.md](CONTRIBUTING.md), [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md), and the issue templates under [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE) for scoped work. The best contributions improve one pattern, one starter pack, one example path, or one enterprise checklist at a time.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md), and [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE). The best contributions improve one starter pack, one example path, one demo surface, or one enterprise checklist at a time.
