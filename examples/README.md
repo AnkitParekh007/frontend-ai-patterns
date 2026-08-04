@@ -36,6 +36,13 @@ Use this when you need realistic demo data, UI state previews, tests, or Storybo
 
 Each starter pack includes a contract, fixture, diagram, implementation checklist, and testing checklist for one pattern.
 
+## Full Demo App
+
+- [UI-Aware Agent demo](ui-aware-agent/README.md)
+- [What this proves](ui-aware-agent/WHAT_THIS_PROVES.md)
+
+A complete, runnable Angular app showing a UI-aware AI agent that reads page context, suggests workflow actions, requests approval, and shows execution state end to end. Use this when you want to see the patterns above composed into one working application rather than in isolation.
+
 ## Reuse Paths
 
 ### Minimal Integration Path
