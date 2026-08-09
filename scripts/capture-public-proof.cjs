@@ -9,9 +9,10 @@ const viewport = { width: 1440, height: 900 };
 
 fs.mkdirSync(outputDir, { recursive: true });
 const manifest = [];
+let browser;
 
 (async () => {
-  const browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport, colorScheme: 'light', reducedMotion: 'reduce' });
   const page = await context.newPage();
 
@@ -77,8 +78,9 @@ const manifest = [];
   await shot('playground-stalled-stream', response);
 
   fs.writeFileSync(path.join(outputDir, 'manifest.json'), `${JSON.stringify({ docsUrl, playgroundUrl, captures: manifest }, null, 2)}\n`);
-  await browser.close();
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;
+}).finally(async () => {
+  if (browser) await browser.close();
 });
