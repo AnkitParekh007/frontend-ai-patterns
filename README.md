@@ -2,14 +2,14 @@
 
 Angular and TypeScript patterns for trustworthy AI frontends. This repo is a fork-friendly reference library for streaming UX, grounded citations, tool execution UI, approval flows, recovery states, and enterprise-safe interaction boundaries.
 
-[Live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Public Proof](docs/public-proof.md) | [Runnable Playground](examples/ui-aware-agent/README.md) | [Quickstart](docs/quickstart.md) | [Pattern Library](docs/pattern-library.md)
+[Live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Live Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/) | [Public Proof](docs/public-proof.md) | [Quickstart](docs/quickstart.md) | [Pattern Library](docs/pattern-library.md)
 
 ![Architecture overview](docs/assets/architecture-overview.svg)
 
 ## Review This Repo In 30 Seconds
 
 - **See the architecture:** the diagram above shows the UI, context, orchestration, policy, retrieval, tool, and model boundaries.
-- **See the runtime proof:** the [Trustworthy AI Pattern Playground](examples/ui-aware-agent/README.md) exercises grounded success, missing evidence, failed-tool recovery, and stalled-stream retry with deterministic fixtures.
+- **See the runtime proof:** the [live Trustworthy AI Pattern Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/) exercises grounded success, missing evidence, failed-tool recovery, and stalled-stream retry with deterministic fixtures.
 - **See the design intent:** [Public Proof](docs/public-proof.md) gives a 30-second, 3-minute, and 15-minute review path plus the exact evidence matrix.
 
 The playground demonstrates the full frontend lifecycle without provider credentials:
@@ -54,15 +54,16 @@ The playground demonstrates the full frontend lifecycle without provider credent
 
 ### Demo Surfaces
 
-- [Trustworthy AI Pattern Playground](examples/ui-aware-agent/README.md)
+- [Live Trustworthy AI Pattern Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/)
+- [Playground implementation notes](examples/ui-aware-agent/README.md)
 - [Streaming states](docs/demo-gallery.md#streaming-states-demo)
 - [Tool timeline](docs/demo-gallery.md#tool-timeline-demo)
 - [Approval gate](docs/demo-gallery.md#approval-gate-demo)
 
 ## Open The Right Surface First
 
+- `Live Playground`: exercise success and failure state transitions in the browser without provider credentials
 - `Public Proof`: evaluate the repo in 30 seconds, 3 minutes, or 15 minutes
-- `Runnable Playground`: exercise success and failure state transitions locally without provider credentials
 - `Quickstart`: copy one contract, one fixture, or one starter pack in minutes
 - `Demo Gallery`: inspect high-signal product behaviors before reading every pattern page
 - `Pattern Library`: browse workflow-based patterns with failure modes, accessibility, and tests
@@ -152,7 +153,7 @@ flowchart LR
 
 - Angular: examples are written for standalone Angular and signal-oriented state patterns.
 - TypeScript: contracts target strict TypeScript and JSON-serializable UI state.
-- Hosting: the docs site is static and GitHub Pages-friendly by design.
+- Hosting: the documentation site and deterministic Angular playground are published together through GitHub Pages.
 
 ## What This Repo Is
 
