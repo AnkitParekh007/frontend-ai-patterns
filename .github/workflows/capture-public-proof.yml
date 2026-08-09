@@ -4,14 +4,9 @@ on:
   workflow_dispatch:
   pull_request:
     branches: ['master']
-  push:
-    branches: ['agent/final-visual-proof']
-    paths:
-      - 'scripts/capture-public-proof.cjs'
-      - '.github/workflows/capture-public-proof.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   capture:
@@ -19,18 +14,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: examples/ui-aware-agent/package-lock.json
-
       - name: Install playground dependencies
         working-directory: examples/ui-aware-agent
         run: npm ci
-
       - name: Start exact branch playground locally
         working-directory: examples/ui-aware-agent
         shell: bash
@@ -42,7 +34,6 @@ jobs:
           done
           cat /tmp/frontend-ai-playground.log
           exit 1
-
       - name: Install isolated Playwright runtime
         run: |
           mkdir -p /tmp/public-proof-playwright
@@ -50,10 +41,8 @@ jobs:
           npm init -y
           npm install --no-audit --no-fund playwright@1.54.2
           npx playwright install --with-deps chromium
-
       - name: Install GIF tooling
         run: sudo apt-get update && sudo apt-get install -y imagemagick gifsicle
-
       - name: Capture exact branch proof states
         env:
           NODE_PATH: /tmp/public-proof-playwright/node_modules
@@ -61,41 +50,28 @@ jobs:
           CAPTURE_PLAYGROUND_URL: http://127.0.0.1:4201/
           CAPTURE_OUTPUT_DIR: ${{ runner.temp }}/public-proof-captures
         run: node scripts/capture-public-proof.cjs
-
-      - name: Build optimized recruiter walkthrough GIF
+      - name: Rebuild and validate recruiter walkthrough GIF
         shell: bash
         run: |
           set -euo pipefail
           captures='${{ runner.temp }}/public-proof-captures'
-          out='docs/assets/public-proof/trustworthy-ai-playground.gif'
-          mkdir -p "$(dirname "$out")"
+          rendered='${{ runner.temp }}/trustworthy-ai-playground.gif'
           frames=()
           for name in playground-grounded playground-no-evidence playground-failed-tool playground-stalled-stream; do
             test -s "$captures/$name.png"
             frames+=("$captures/$name.png")
           done
-          convert -delay 145 -loop 0 "${frames[@]}" -resize '960x600>' -layers Optimize "$out"
-          gifsicle -O3 --colors 128 "$out" -o "$out"
-          test -s "$out"
-          test "$(stat -c%s "$out")" -lt 8000000
-
+          convert -delay 145 -loop 0 "${frames[@]}" -resize '960x600>' -layers Optimize "$rendered"
+          gifsicle -O3 --colors 128 "$rendered" -o "$rendered"
+          test -s "$rendered"
+          test "$(stat -c%s "$rendered")" -lt 8000000
+          test -s docs/assets/public-proof/trustworthy-ai-playground.gif
       - name: Upload public proof captures
         uses: actions/upload-artifact@v4
         with:
           name: frontend-ai-patterns-public-proof
           path: |
             ${{ runner.temp }}/public-proof-captures
-            docs/assets/public-proof/trustworthy-ai-playground.gif
+            ${{ runner.temp }}/trustworthy-ai-playground.gif
           if-no-files-found: error
           retention-days: 30
-
-      - name: Commit generated final asset to generation branch
-        if: ${{ github.event_name == 'push' && github.ref_name == 'agent/final-visual-proof' }}
-        shell: bash
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/assets/public-proof/trustworthy-ai-playground.gif
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Add final trustworthy AI public proof GIF [skip ci]'
-          git push origin HEAD:${GITHUB_REF_NAME}
