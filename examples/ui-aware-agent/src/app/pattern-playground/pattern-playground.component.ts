@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import {
   PlaygroundScenario,
   PlaygroundScenarioId,
@@ -61,7 +61,7 @@ import { PlaygroundScenarioService } from '../services/playground-scenario.servi
             </div>
 
             <ol class="pattern-trace">
-              <li *ngFor="let runtimeEvent of visibleEvents(); let index = index">
+              <li *ngFor="let runtimeEvent of visibleEvents()">
                 <span
                   class="trace-status"
                   [attr.data-state]="runtimeEvent.status"
@@ -171,6 +171,8 @@ import { PlaygroundScenarioService } from '../services/playground-scenario.servi
   `,
 })
 export class PatternPlaygroundComponent {
+  private readonly scenarioService = inject(PlaygroundScenarioService);
+
   readonly scenarioOptions: ReadonlyArray<{
     id: PlaygroundScenarioId;
     label: string;
@@ -194,8 +196,6 @@ export class PatternPlaygroundComponent {
     }
     return this.visibleEvents().some(runtimeEvent => runtimeEvent.phase === 'approval');
   });
-
-  constructor(private readonly scenarioService: PlaygroundScenarioService) {}
 
   selectScenario(id: PlaygroundScenarioId): void {
     this.scenario.set(this.scenarioService.build(id));
