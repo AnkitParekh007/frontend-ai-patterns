@@ -16,9 +16,11 @@ let browser;
   const context = await browser.newContext({ viewport, colorScheme: 'light', reducedMotion: 'reduce' });
   const page = await context.newPage();
 
-  async function open(target) {
+  async function open(target, expectPlayground = true) {
     const response = await page.goto(target, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    await page.waitForTimeout(700);
+    if (expectPlayground) {
+      await page.getByRole('heading', { name: /run the full lifecycle without provider credentials/i }).waitFor({ state: 'visible', timeout: 30000 });
+    }
     return response;
   }
 
@@ -43,20 +45,18 @@ let browser;
   }
 
   if (process.env.CAPTURE_SKIP_DOCS !== 'true') {
-    const docsResponse = await open(docsUrl);
+    const docsResponse = await open(docsUrl, false);
     await shot('docs-home', docsResponse);
   }
 
   let response = await open(playgroundUrl);
   await select(/^Grounded flow/i);
   await runToBoundary();
-  await page.waitForTimeout(250);
   await shot('playground-grounded', response);
 
   response = await open(playgroundUrl);
   await select(/^No evidence/i);
   await runToBoundary();
-  await page.waitForTimeout(250);
   await shot('playground-no-evidence', response);
 
   response = await open(playgroundUrl);
