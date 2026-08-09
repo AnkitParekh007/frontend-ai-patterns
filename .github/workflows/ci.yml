@@ -43,5 +43,8 @@ jobs:
       - name: Run deterministic scenario tests
         run: npm test
 
-      - name: Build Angular playground
-        run: npm run build -- --configuration production
+      - name: Build Angular playground with Pages base href
+        run: npm run build -- --configuration production --base-href /frontend-ai-patterns/playground/
+
+      - name: Verify Pages-ready playground output
+        run: test -f dist/ai-ui-agent-demo/browser/index.html

@@ -6,11 +6,12 @@ The repository is intentionally not a generic chat UI kit. It is a reference sys
 
 ## 30-second review
 
-Open these three surfaces:
+Open these four surfaces:
 
-1. [Architecture overview](assets/architecture-overview.svg)
-2. [Pattern preview grid](assets/pattern-preview-grid.svg)
-3. [Trustworthy AI Pattern Playground](../examples/ui-aware-agent/README.md)
+1. [Live Trustworthy AI Pattern Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/)
+2. [Architecture overview](assets/architecture-overview.svg)
+3. [Pattern preview grid](assets/pattern-preview-grid.svg)
+4. [Playground implementation notes](../examples/ui-aware-agent/README.md)
 
 You should be able to answer three questions immediately:
 
@@ -20,7 +21,7 @@ You should be able to answer three questions immediately:
 
 ## 3-minute review
 
-Run the deterministic Angular playground:
+Use the live playground or run the deterministic Angular playground locally:
 
 ```bash
 cd examples/ui-aware-agent
@@ -65,6 +66,10 @@ Inspect these implementation boundaries:
 | Context awareness | safe serializable page-context model |
 | Accessibility | native controls, focus behavior, `aria-live` guidance, checklist |
 | Backend boundary | docs and playground explicitly keep auth, policy, secrets, execution, and audit server-side |
+
+## Deployment proof
+
+The GitHub Pages workflow now builds both the documentation site and the Angular playground into one Pages artifact. After deployment it performs HTTP smoke checks against the documentation root and `/playground/`, so the public proof cannot silently drift into a source-only promise.
 
 ## Screenshot and GIF capture plan
 
