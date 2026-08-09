@@ -48,7 +48,7 @@ Inspect these implementation boundaries:
 - [`examples/ui-aware-agent/src/app/models/playground-scenario.model.ts`](../examples/ui-aware-agent/src/app/models/playground-scenario.model.ts) — typed scenario/event contracts
 - [`examples/ui-aware-agent/src/app/services/playground-scenario.service.ts`](../examples/ui-aware-agent/src/app/services/playground-scenario.service.ts) — deterministic scenario builders
 - [`starter-packs/`](../starter-packs/) — reusable implementation/testing checklists
-- [`docs/adr/`](adr/) — architecture decisions and tradeoffs
+- [`docs/design-review-checklist.md`](design-review-checklist.md) — architecture review prompts and tradeoffs
 - [`docs/threat-modeling-checklist.md`](threat-modeling-checklist.md) — trust-boundary review
 - [`docs/accessibility-checklist.md`](accessibility-checklist.md) — keyboard and assistive-technology review
 
