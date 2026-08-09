@@ -29,8 +29,26 @@ jobs:
       - name: Validate docs and starter packs
         run: npm run verify
 
-      - name: Assemble static site
+      - name: Install playground dependencies
+        working-directory: examples/ui-aware-agent
+        run: npm ci
+
+      - name: Test deterministic playground scenarios
+        working-directory: examples/ui-aware-agent
+        run: npm test
+
+      - name: Build playground for GitHub Pages
+        working-directory: examples/ui-aware-agent
+        run: npm run build -- --configuration production --base-href /frontend-ai-patterns/playground/
+
+      - name: Assemble static docs site
         run: npm run build:site
+
+      - name: Publish runnable playground into site artifact
+        run: |
+          rm -rf _site/playground
+          mkdir -p _site/playground
+          cp -R examples/ui-aware-agent/dist/ai-ui-agent-demo/browser/. _site/playground/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -50,3 +68,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Smoke test published docs and playground
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          curl --fail --silent --show-error --location --retry 6 --retry-all-errors --retry-delay 5 "$PAGE_URL" >/dev/null
+          curl --fail --silent --show-error --location --retry 6 --retry-all-errors --retry-delay 5 "${PAGE_URL%/}/playground/" >/dev/null
