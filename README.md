@@ -2,9 +2,19 @@
 
 Angular and TypeScript patterns for trustworthy AI frontends. This repo is a fork-friendly reference library for streaming UX, grounded citations, tool execution UI, approval flows, recovery states, and enterprise-safe interaction boundaries.
 
-[Live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Quickstart](docs/quickstart.md) | [Demo Gallery](docs/demo-gallery.md) | [Use Cases](docs/use-cases.md) | [Pattern Library](docs/pattern-library.md)
+[Live docs site](https://ankitparekh007.github.io/frontend-ai-patterns/) | [Public Proof](docs/public-proof.md) | [Runnable Playground](examples/ui-aware-agent/README.md) | [Quickstart](docs/quickstart.md) | [Pattern Library](docs/pattern-library.md)
 
 ![Architecture overview](docs/assets/architecture-overview.svg)
+
+## Review This Repo In 30 Seconds
+
+- **See the architecture:** the diagram above shows the UI, context, orchestration, policy, retrieval, tool, and model boundaries.
+- **See the runtime proof:** the [Trustworthy AI Pattern Playground](examples/ui-aware-agent/README.md) exercises grounded success, missing evidence, failed-tool recovery, and stalled-stream retry with deterministic fixtures.
+- **See the design intent:** [Public Proof](docs/public-proof.md) gives a 30-second, 3-minute, and 15-minute review path plus the exact evidence matrix.
+
+The playground demonstrates the full frontend lifecycle without provider credentials:
+
+`streaming → retrieval → citations → tool plan → approval → execution → grounded result → failure/retry/recovery`
 
 ## Copy This In Five Minutes
 
@@ -44,12 +54,15 @@ Angular and TypeScript patterns for trustworthy AI frontends. This repo is a for
 
 ### Demo Surfaces
 
+- [Trustworthy AI Pattern Playground](examples/ui-aware-agent/README.md)
 - [Streaming states](docs/demo-gallery.md#streaming-states-demo)
 - [Tool timeline](docs/demo-gallery.md#tool-timeline-demo)
 - [Approval gate](docs/demo-gallery.md#approval-gate-demo)
 
 ## Open The Right Surface First
 
+- `Public Proof`: evaluate the repo in 30 seconds, 3 minutes, or 15 minutes
+- `Runnable Playground`: exercise success and failure state transitions locally without provider credentials
 - `Quickstart`: copy one contract, one fixture, or one starter pack in minutes
 - `Demo Gallery`: inspect high-signal product behaviors before reading every pattern page
 - `Pattern Library`: browse workflow-based patterns with failure modes, accessibility, and tests
@@ -119,6 +132,7 @@ flowchart LR
 
 ## Repo Entry Points
 
+- [Public proof review path](docs/public-proof.md)
 - [Examples overview](docs/examples.md)
 - [Adoption guide](docs/adoption-guide.md)
 - [Comparisons against generic AI chat UI](docs/comparisons.md)
@@ -127,6 +141,12 @@ flowchart LR
 - [Threat modeling checklist](docs/threat-modeling-checklist.md)
 - [Accessibility checklist](docs/accessibility-checklist.md)
 - [Observability checklist](docs/observability-checklist.md)
+
+## Ecosystem Path
+
+**Learn → Pattern → Run → Platform → Govern → Operate**
+
+[AI Tools Cheatsheets](https://github.com/AnkitParekh007/ai-tools-cheatsheets) → **Frontend AI Patterns** → [Angular AI Copilot Starter](https://github.com/AnkitParekh007/angular-ai-copilot-starter) → [ngx-copilot-platform](https://github.com/AnkitParekh007/ngx-copilot-platform) → [Agent Studio](https://github.com/AnkitParekh007/agent-studio) → [Org AI Force](https://github.com/AnkitParekh007/org-ai-force)
 
 ## Compatibility
 
