@@ -84,4 +84,4 @@ The original UI-aware agent components and services remain in the example as add
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md). High-value contributions add one deterministic scenario, improve accessibility, strengthen state-transition tests, or make the backend boundary easier to review.
+See [CONTRIBUTING.md](../../CONTRIBUTING.md) and [GOOD_FIRST_ISSUES.md](../../GOOD_FIRST_ISSUES.md). High-value contributions add one deterministic scenario, improve accessibility, strengthen state-transition tests, or make the backend boundary easier to review.
