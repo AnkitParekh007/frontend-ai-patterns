@@ -20,3 +20,28 @@ jobs:
 
       - name: Validate docs links and starter packs
         run: npm run verify
+
+  validate-pattern-playground:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/ui-aware-agent
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: examples/ui-aware-agent/package-lock.json
+
+      - name: Install playground dependencies
+        run: npm ci
+
+      - name: Run deterministic scenario tests
+        run: npm test
+
+      - name: Build Angular playground
+        run: npm run build -- --configuration production

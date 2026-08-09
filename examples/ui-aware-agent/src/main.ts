@@ -1,4 +1,4 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+import { PatternPlaygroundComponent } from './app/pattern-playground/pattern-playground.component';
 
-bootstrapApplication(AppComponent).catch(error => console.error(error));
+bootstrapApplication(PatternPlaygroundComponent).catch(error => console.error(error));

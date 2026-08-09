@@ -21,7 +21,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/pattern-playground/pattern-playground.component.css"
             ]
           },
           "configurations": {
