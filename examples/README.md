@@ -2,20 +2,33 @@
 
 The examples are split by reuse surface so teams can lift only the part they need.
 
-## Copy first, then adapt
+## Start With The Right Surface
 
+- Want the complete runnable lifecycle: start with the [Trustworthy AI Pattern Playground](ui-aware-agent/README.md)
 - Want shared frontend contracts: start with [TypeScript Models](typescript-models/README.md)
 - Want realistic UI states: start with [Mock Fixtures](mock-data/README.md)
 - Want shell and store boundaries: start with [Angular Example](angular/README.md)
 - Want a forkable bundle for one pattern: start with [Starter Packs](../starter-packs/README.md)
 
-## Angular Example
+## Trustworthy AI Pattern Playground
+
+- [Run the Angular playground](ui-aware-agent/README.md)
+- [Scenario + accessibility documentation](ui-aware-agent/docs/pattern-playground.md)
+- [What this proves](ui-aware-agent/WHAT_THIS_PROVES.md)
+
+The runnable Angular app composes the repository's trust patterns into deterministic scenarios covering:
+
+`streaming → retrieval → citations → tool plan → approval → execution → grounded result → failure/retry/recovery`
+
+It includes a grounded success path, missing-evidence suppression, failed-tool recovery, and a stalled-stream retry that retains the same safe context snapshot. No model or tool credentials are required.
+
+## Angular Composition Example
 
 - [Angular composition notes](angular/README.md)
 - [Signal-based shell example](angular/agent-shell.example.ts)
 - [Tool and approval shell example](angular/tool-approval-shell.example.ts)
 
-Use this when you need help deciding component, store, and service boundaries in an Angular app.
+Use these smaller examples when you need help deciding component, store, and service boundaries without adopting the complete playground.
 
 ## TypeScript Models
 
@@ -36,13 +49,6 @@ Use this when you need realistic demo data, UI state previews, tests, or Storybo
 
 Each starter pack includes a contract, fixture, diagram, implementation checklist, and testing checklist for one pattern.
 
-## Full Demo App
-
-- [UI-Aware Agent demo](ui-aware-agent/README.md)
-- [What this proves](ui-aware-agent/WHAT_THIS_PROVES.md)
-
-A complete, runnable Angular app showing a UI-aware AI agent that reads page context, suggests workflow actions, requests approval, and shows execution state end to end. Use this when you want to see the patterns above composed into one working application rather than in isolation.
-
 ## Reuse Paths
 
 ### Minimal Integration Path
@@ -53,10 +59,11 @@ A complete, runnable Angular app showing a UI-aware AI agent that reads page con
 
 ### Production-Shaped Integration Path
 
-1. Start from the matching starter pack in `starter-packs/`.
-2. Use `examples/typescript-models/pattern-models.ts` as the shared frontend contract layer.
-3. Use the Angular examples to define stores, facades, and presentational components.
-4. Validate the behavior against the enterprise checklists under `docs/`.
+1. Run the deterministic Angular playground and inspect the state transitions.
+2. Start from the matching starter pack in `starter-packs/`.
+3. Use `examples/typescript-models/pattern-models.ts` as the shared frontend contract layer.
+4. Use the Angular examples to define stores, facades, and presentational components.
+5. Validate the behavior against the enterprise checklists under `docs/`.
 
 ## See It Before You Fork It
 
