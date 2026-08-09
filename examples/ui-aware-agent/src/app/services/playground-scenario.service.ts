@@ -3,6 +3,7 @@ import {
   PlaygroundEvent,
   PlaygroundScenario,
   PlaygroundScenarioId,
+  PlaygroundToolCall,
 } from '../models/playground-scenario.model';
 
 const SAFE_CONTEXT = [
@@ -151,7 +152,7 @@ export function applyApprovalDecision(
   if (decision === 'rejected') {
     return {
       ...scenario,
-      events: scenario.events.map(current => {
+      events: scenario.events.map((current): PlaygroundEvent => {
         if (current.phase === 'approval') {
           return { ...current, status: 'completed', detail: 'The operator rejected the proposed action.' };
         }
@@ -166,14 +167,14 @@ export function applyApprovalDecision(
         }
         return current;
       }),
-      toolCalls: scenario.toolCalls.map(tool => ({ ...tool, status: 'blocked' })),
+      toolCalls: scenario.toolCalls.map((tool): PlaygroundToolCall => ({ ...tool, status: 'blocked' })),
       answer: 'The proposed action was rejected. No tool executed, and the grounded evidence remains available for review.',
     };
   }
 
   return {
     ...scenario,
-    events: scenario.events.map(current => {
+    events: scenario.events.map((current): PlaygroundEvent => {
       if (current.phase === 'approval') {
         return { ...current, status: 'completed', detail: 'The operator approved the typed tool proposal.' };
       }
@@ -192,7 +193,7 @@ export function applyApprovalDecision(
       }
       return current;
     }),
-    toolCalls: scenario.toolCalls.map(tool => ({
+    toolCalls: scenario.toolCalls.map((tool): PlaygroundToolCall => ({
       ...tool,
       status: toolFailure ? 'failed' : 'completed',
     })),
