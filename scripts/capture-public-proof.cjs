@@ -26,8 +26,8 @@ function url(relative) {
 
   async function shot(name, response) {
     const file = path.join(outputDir, `${name}.png`);
-    await page.screenshot({ path: file, fullPage: true });
-    manifest.push({ name, file: path.basename(file), url: page.url(), status: response ? response.status() : null });
+    await page.screenshot({ path: file, fullPage: false });
+    manifest.push({ name, file: path.basename(file), url: page.url(), status: response ? response.status() : null, viewport });
   }
 
   async function select(label) {
@@ -47,21 +47,18 @@ function url(relative) {
   const docsResponse = await open(baseUrl);
   await shot('docs-home', docsResponse);
 
-  // 1) Grounded plan pauses at the explicit approval boundary.
   let response = await open(url('playground/'));
   await select(/^Grounded flow/i);
   await runToBoundary();
   await page.getByRole('heading', { name: /approval required before execution/i }).waitFor();
   await shot('playground-grounded', response);
 
-  // 2) Missing evidence completes without citations or a tool plan.
   response = await open(url('playground/'));
   await select(/^No evidence/i);
   await runToBoundary();
   await page.getByText(/does not fabricate evidence/i).waitFor();
   await shot('playground-no-evidence', response);
 
-  // 3) Approved deterministic tool fails visibly rather than becoming success.
   response = await open(url('playground/'));
   await select(/^Tool failure/i);
   await runToBoundary();
@@ -72,7 +69,6 @@ function url(relative) {
   await page.getByText(/failed safely/i).waitFor();
   await shot('playground-failed-tool', response);
 
-  // 4) Stalled stream exposes retry, then preserves the safe context snapshot.
   response = await open(url('playground/'));
   await select(/^Stalled stream/i);
   await runToBoundary();
