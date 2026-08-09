@@ -2,26 +2,38 @@ name: Capture Public Proof
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Deploy GitHub Pages']
-    types: [completed]
+  pull_request:
+    branches: ['master']
 
 permissions:
   contents: read
 
 jobs:
   capture:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
+          cache: npm
+          cache-dependency-path: examples/ui-aware-agent/package-lock.json
+      - name: Install playground dependencies
+        working-directory: examples/ui-aware-agent
+        run: npm ci
+      - name: Start exact branch playground locally
+        working-directory: examples/ui-aware-agent
+        shell: bash
+        run: |
+          npm start -- --host 127.0.0.1 --port 4201 > /tmp/frontend-ai-playground.log 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4201/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/frontend-ai-playground.log
+          exit 1
       - name: Install isolated Playwright runtime
         run: |
           mkdir -p /tmp/public-proof-playwright
@@ -29,18 +41,37 @@ jobs:
           npm init -y
           npm install --no-audit --no-fund playwright@1.54.2
           npx playwright install --with-deps chromium
-
-      - name: Capture deployed proof surfaces
+      - name: Install GIF tooling
+        run: sudo apt-get update && sudo apt-get install -y imagemagick gifsicle
+      - name: Capture exact branch proof states
         env:
           NODE_PATH: /tmp/public-proof-playwright/node_modules
-          CAPTURE_BASE_URL: https://ankitparekh007.github.io/frontend-ai-patterns/
+          CAPTURE_SKIP_DOCS: 'true'
+          CAPTURE_PLAYGROUND_URL: http://127.0.0.1:4201/
           CAPTURE_OUTPUT_DIR: ${{ runner.temp }}/public-proof-captures
         run: node scripts/capture-public-proof.cjs
-
+      - name: Rebuild and validate recruiter walkthrough GIF
+        shell: bash
+        run: |
+          set -euo pipefail
+          captures='${{ runner.temp }}/public-proof-captures'
+          rendered='${{ runner.temp }}/trustworthy-ai-playground.gif'
+          frames=()
+          for name in playground-grounded playground-no-evidence playground-failed-tool playground-stalled-stream; do
+            test -s "$captures/$name.png"
+            frames+=("$captures/$name.png")
+          done
+          convert -delay 145 -loop 0 "${frames[@]}" -resize '960x600>' -layers Optimize "$rendered"
+          gifsicle -O3 --colors 128 "$rendered" -o "$rendered"
+          test -s "$rendered"
+          test "$(stat -c%s "$rendered")" -lt 8000000
+          test -s docs/assets/public-proof/trustworthy-ai-playground.gif
       - name: Upload public proof captures
         uses: actions/upload-artifact@v4
         with:
           name: frontend-ai-patterns-public-proof
-          path: ${{ runner.temp }}/public-proof-captures
+          path: |
+            ${{ runner.temp }}/public-proof-captures
+            ${{ runner.temp }}/trustworthy-ai-playground.gif
           if-no-files-found: error
           retention-days: 30

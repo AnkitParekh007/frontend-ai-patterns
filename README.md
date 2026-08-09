@@ -12,6 +12,12 @@ Angular and TypeScript patterns for trustworthy AI frontends. This repo is a for
 - **See the runtime proof:** the [live Trustworthy AI Pattern Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/) exercises grounded success, missing evidence, failed-tool recovery, and stalled-stream retry with deterministic fixtures.
 - **See the design intent:** [Public Proof](docs/public-proof.md) gives a 30-second, 3-minute, and 15-minute review path plus the exact evidence matrix.
 
+<p align="center">
+  <img src="docs/assets/public-proof/trustworthy-ai-playground.gif" alt="Trustworthy AI playground showing approval, missing evidence, tool failure, and stalled-stream retry" width="960" />
+</p>
+
+<p align="center"><em>Real exact-branch capture: grounded approval boundary → no-evidence suppression → failed tool → stalled-stream retry with preserved safe context. Deterministic fixtures; no provider credentials or real automation.</em></p>
+
 The playground demonstrates the full frontend lifecycle without provider credentials:
 
 `streaming → retrieval → citations → tool plan → approval → execution → grounded result → failure/retry/recovery`
