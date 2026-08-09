@@ -6,6 +6,10 @@ The repository is intentionally not a generic chat UI kit. It is a reference sys
 
 ## 30-second review
 
+![Trustworthy AI playground lifecycle](assets/public-proof/trustworthy-ai-playground.gif)
+
+The animation is generated from the exact Angular branch build at a 1440×900 recruiter viewport. It proves the approval boundary, evidence suppression, truthful tool failure, and stalled-stream retry while keeping the demo/mock boundary explicit.
+
 Open these four surfaces:
 
 1. [Live Trustworthy AI Pattern Playground](https://ankitparekh007.github.io/frontend-ai-patterns/playground/)
