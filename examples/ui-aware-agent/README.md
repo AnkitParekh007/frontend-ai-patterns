@@ -1,60 +1,10 @@
-# AI UI Agent Demo
+# Trustworthy AI Pattern Playground
 
-An Angular demo of a UI-aware AI agent that reads safe page context, suggests workflow actions, asks for approval, executes mocked actions, and surfaces recovery states in a visible operator UI.
+A deterministic Angular reference implementation for the full AI frontend lifecycle:
 
-All actions in this repo are mocked and safe. There is no real browser automation, no hidden backend execution, and no unsafe workflow mutation.
+`streaming → retrieval → citations → tool plan → approval → execution → grounded result → failure/retry/recovery`
 
-![Dashboard placeholder](docs/assets/screenshots/main-screen.png)
-
-## Live Demo And Docs
-
-Live demo:
-[https://ankitparekh007.github.io/ai-ui-agent-demo/](https://ankitparekh007.github.io/ai-ui-agent-demo/)
-
-The repo remains mock-only and safe, but the Angular demo is now deployable through GitHub Pages.
-
-## 20-Second GIF
-
-Placeholder path for the launch clip:
-`docs/assets/screenshots/ui-agent-flow.gif`
-
-## What The Demo Shows
-
-- fake enterprise dashboard with customer and product queue
-- selected record detail panel with visible fields
-- agent side panel with serialized safe context
-- suggested actions based on the selected record
-- approval-first workflow handling
-- action execution timeline
-- recovery and error panel
-- action log for audit-friendly review
-
-## Why UI Context Matters
-
-An agent should not receive the entire hidden application state just because it can. This demo shows the opposite approach: serialize only safe, visible, relevant context such as route, role, selected record, status, owner, and visible fields. That makes the interaction easier to reason about, easier to debug, and safer to review with users.
-
-## Demo Script
-
-1. Open the fake customer operations dashboard.
-2. Select a different record in the customer table and show how the context inspector changes.
-3. Review the selected record detail panel and visible fields.
-4. Click a suggested action that requires approval.
-5. Approve the mocked workflow and show the execution timeline.
-6. Trigger the mocked recovery action and show the recovery panel plus action log.
-
-## Architecture
-
-```mermaid
-flowchart LR
-    Dashboard["Dashboard and selected record"] --> Serializer["ContextSerializerService"]
-    Serializer --> Agent["MockAgentService"]
-    Agent --> Suggestions["Suggested actions"]
-    Suggestions --> Approval["ActionApprovalService"]
-    Approval --> Runner["WorkflowRunnerService"]
-    Runner --> Timeline["Execution timeline"]
-    Runner --> Recovery["Recovery panel"]
-    Runner --> Log["Action log"]
-```
+The playground runs entirely from local fixtures. It requires no provider credentials, never performs real automation, and keeps the production backend enforcement boundary explicit.
 
 ## Run Locally
 
@@ -66,27 +16,72 @@ npm start
 Validation:
 
 ```bash
-npm run build
 npm test
+npm run build -- --configuration production
 ```
 
-## What This Proves For Recruiters
+## Scenarios
 
-- Angular architecture for UI-aware agent experiences
-- safe context serialization instead of vague “AI reads the page” claims
-- approval-first workflow UX
-- visible execution and recovery states
-- honest mocking boundaries without fake automation claims
+### Grounded flow
 
-## Docs
+Trusted fixture evidence is rendered as citations, a typed tool proposal is shown, execution stops at a human approval gate, and the deterministic mock action runs only after approval.
 
-- [Context serialization](docs/context-serialization.md)
-- [Approval-first agent UX](docs/approval-first-agent-ux.md)
-- [Action execution timeline](docs/action-execution-timeline.md)
-- [Recovery states](docs/recovery-states.md)
-- [Recruiter review guide](docs/recruiter-review-guide.md)
-- [Screenshot and GIF capture guide](docs/screenshots.md)
+### No grounded evidence
+
+Retrieval produces no trusted sources. Citations are suppressed, tool planning/execution remain blocked, and the answer states that evidence is missing instead of inventing a grounded response.
+
+### Failed tool
+
+Grounding and approval succeed, but the deterministic tool fixture fails. The UI reports failure accurately and exposes a recovery state rather than claiming success.
+
+### Stalled stream
+
+The assistant stream stalls after safe context serialization. Retry preserves the exact visible-context snapshot and resumes the lifecycle from a clean deterministic boundary.
+
+## What This Proves
+
+- Angular-first AI frontend state modeling
+- fixture-driven deterministic demo and test behavior
+- visible streaming, retrieval, citation, tool, approval, execution, result, and recovery states
+- citation suppression when retrieval is not grounded
+- human-in-the-loop execution boundaries
+- explicit failed-tool and stalled-stream UX
+- safe context serialization rather than hidden-page-state access
+- keyboard-accessible native controls and screen-reader announcements
+- honest frontend/backend responsibility boundaries
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Context["Safe UI context"] --> Stream["Streaming state"]
+    Stream --> Retrieval["Retrieval"]
+    Retrieval --> Citations["Inspectable citations"]
+    Citations --> Plan["Typed tool plan"]
+    Plan --> Approval["Human approval"]
+    Approval --> Execution["Mock execution"]
+    Execution --> Result["Grounded result"]
+    Stream --> Recovery["Retry / recovery"]
+    Execution --> Recovery
+```
+
+Production systems must enforce retrieval authorization, approval policy, tool execution, provider credentials, idempotency, and audit logging on the backend. The playground only renders deterministic browser fixtures.
+
+## Accessibility
+
+The scenario selector and all runtime controls use native buttons, expose visible focus, and use at least 44px interactive targets. `aria-pressed` identifies the selected fixture and a polite `aria-live` region announces runtime progression, pauses at approval, decisions, retry, and recovery states.
+
+See [docs/pattern-playground.md](docs/pattern-playground.md) for the complete keyboard, screen-reader, scenario, and backend-boundary behavior.
+
+## Source Map
+
+- `src/app/models/playground-scenario.model.ts` — typed scenario, event, citation, and tool contracts
+- `src/app/services/playground-scenario.service.ts` — pure deterministic scenario builders + Angular service boundary
+- `src/app/pattern-playground/` — interactive Angular reference UI
+- `tests/pattern-playground.spec.ts` — grounding, approval, failure, retry, and context-retention tests
+
+The original UI-aware agent components and services remain in the example as additional reference implementations for context serialization, suggested actions, approvals, workflow steps, recovery states, and audit-style logs.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md). The best contributions here are practical: one richer mock scenario, one accessibility improvement, one test case, or one clearer demo artifact.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOOD_FIRST_ISSUES.md](GOOD_FIRST_ISSUES.md). High-value contributions add one deterministic scenario, improve accessibility, strengthen state-transition tests, or make the backend boundary easier to review.
